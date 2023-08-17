@@ -1,3 +1,3 @@
-jsaid=['voice type']
-rsponce=['what do you want to type?', '']
+jsaid=['@ hotword']
+rsponce=['']
 crsponce=['']
