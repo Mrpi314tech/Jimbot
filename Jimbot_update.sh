@@ -14,12 +14,9 @@ mv ~/Jimbot/Python/skills/install_skills.py ~/skills
 rm -r ~/Jimbot/Python/skills
 mv ~/skills ~/Jimbot/Python
 mv ~/new_words.py ~/Jimbot/Python
-sudo pip install keyboard
-sudo apt-get install wmctrl
 mv ~/info.py ~/Jimbot/Welcome
 mv ~/new_com.py ~/Jimbot/Python
 mv ~/Jimbot_update.sh ~/delete_this_file-Jimbot
-sudo apt-get install xterm
 echo "done"
 echo "Jimbot is installed!"
 echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
