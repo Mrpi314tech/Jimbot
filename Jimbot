@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo python3 ~/Jimbot/Python/keypressed.py &
+python3 ~/Jimbot/Jimbot.py

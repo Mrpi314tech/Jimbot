@@ -1,0 +1,2 @@
+#!/bin/bash
+xterm -bg blue -fg white -e "$@"

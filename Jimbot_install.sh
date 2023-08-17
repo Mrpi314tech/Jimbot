@@ -1,0 +1,69 @@
+#!/bin/bash
+chmod +x ~/Jimbot/Jimbot_install
+location="$HOME"
+cd $HOME
+if [[ "$(id -u)" == 0 ]]; then
+  error "Jimbot should not be installed as root!"
+  sleep 5
+  exit 1
+fi
+chmod +x "${location}/Jimbot/Jimbot"
+chmod +x "${location}/Jimbot/Jimbot_remove.sh"
+mv ~/Jimbot/Jimbot_update.sh ~
+chmod +x "${location}/Jimbot_update.sh"
+echo "Welcome to Jimbot!"
+sleep 3
+echo "this will download some packages"
+sleep 3
+pip3 install SpeechRecognition
+pip install numpy
+sudo apt-get install flac
+pip3 install pyautogui
+sudo apt-get install python3-tk python3-dev
+sudo apt install espeak
+sudo apt-get install portaudio19-dev
+sudo apt-get install xterm
+sudo pip install pyaudio
+pip install pillow
+sudo apt-get install alsa-utils
+pip install pygame
+pip install psutil
+pip install smbus
+pip install pyttsx3
+sudo pip install keyboard
+sudo apt-get install wmctrl
+sudo apt install fswebcam
+sudo apt-get install htop
+echo 'type "y" if it asks you a question: '
+rm -r ~/Jimbot/.git
+echo "Now you will take a survey to help Jimbot get to know you"
+sleep 3
+python3 ~/Jimbot/Welcome/Survey.py
+echo "the survey is over."
+read -p "is the information correctly answered? (y/n)" gsy
+while true; do
+	if [[ $qsy == *"n"* ]]
+	then
+		echo "retaking survey"
+		python3 ~/Jimbot/Welcome/Survey.py
+	else
+		echo "#!/bin/bash
+		~/Jimbot/Jimbot"' "$@"' | sudo tee /usr/local/bin/Jimbot -p /usr/local/bin
+		sudo chmod +x /usr/local/bin/Jimbot
+		mkdir -p ~/.local/share/applications
+		echo "[Desktop Entry]
+		Name=Jimbot
+		Comment=Jimbot the AI
+		Exec=Jimbot
+		Icon=${location}/Jimbot/images/Jimbot.png
+		Terminal=false
+		Type=Application
+		Categories=System;
+		StartupNotify=true" > ~/.local/share/applications/Jimbot.desktop
+		echo "done"
+		echo "Jimbot is installed!"
+		echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
+		sleep 10
+		exit 1
+	fi
+done
