@@ -1,6 +1,7 @@
 <body style="background-color:lightblue;">
 <h1>Jimbot</h1>
 "Control your computer, with your voice."
+<h1></h1>
 <br>
 Welcome to Jimbot!
 Jimbot is an artificial intelligence program/task manager that acts like a human. He can help out by doing
