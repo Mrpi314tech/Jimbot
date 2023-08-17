@@ -1,5 +1,5 @@
 <body style="background-color:lightblue;">
-<h1>Jimbot v1.0.4</h1>
+<h1>Jimbot</h1>
 "Control your computer, with your voice."
 <h1>Jimbot</h1>
 <br>
