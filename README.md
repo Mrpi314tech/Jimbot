@@ -2,42 +2,61 @@
 <h1>Jimbot</h1>
 "Control your computer, with your voice."
 <h1></h1>
+<img src="https://raw.githubusercontent.com/Mrpi314tech/Jimbot/main/images/Jimbot.png" alt="Jimbot logo">
 <br>
 Welcome to Jimbot!
-Jimbot is an artificial intelligence program/task manager that acts like a human. He can help out by doing
-things like turn on smart plugs and play music. He also keeps track of your system statistics, and can end unwanted processes just with voice. He can also run commands just with your voice. Installing the app is just 2 MB, but all of the packages is about 800 MB. You can also press the edit button to open websites, run commands, and talk just with your voice!
+Jimbot is a virtual assistant for your computer. It can do many things, like open an application, run a command, type with your voice, search things on google, and much more.
 <br>
+<h1>Supported Systems</h1>
+-Raspberry pi OS
 <br>
+-Ubuntu
 <br>
-<h3>Parts you need:</h3>
-Computer with a Linux based operating system and a microphone
+-Chrome OS
 <br>
-<h3>Step 1:</h3>
-<h4>You can just press the button above to install it. Execute the script to install Jimbot.</h4>
-First run this command in the command prompt. Make sure you have pip and git installed, and the file is installled in the home directory.
+*It should work on all linux based operating systems
 <br>
-<pre><code>cd ~ && git clone https://github.com/Mrpi314tech/Jimbot && chmod +x ~/Jimbot/Jimbot_install.sh && ~/Jimbot/Jimbot_install.sh</code></pre>
-<h3>Step 2:</h3>
-<br>
-Go to the main menu and open the path called "Other" then click the application called Jimbot. Jimbot will wake up!
-<br>
-<img src="https://raw.githubusercontent.com/Mrpi314tech/Jimbot/main/images/HowTo.jpg" alt="HowTo">
-<br>
-Or just type "Jimbot" in the terminal
-<br>
-Press the logo to talk
-<br>
+<h2>To install:</h2>
+  Download <a href='https://raw.githubusercontent.com/Mrpi314tech/Jimbot/main/Install.sh'>this file</a> and execute it.
 <h3>To Update</h3>
-<pre><code>~/Jimbot_update.sh</code></pre>
+Presss the icon in the lower right corner
 <h3>To uninstall</h3>
 <pre><code>~/Jimbot/Jimbot_remove.sh</code></pre>
-<h3>Jimbot can:</h3>
-Talk to you
+<h1>To use:</h1>
+Say the hotword "Jimbot" and it will start listening
+<h2>Buttons</h2>
+<h3>Edit **</h3>
+Allows you to add your own responses/bash commands
+<h3>Info</h3>
+Basically an instruction manual
+<h3>History</h3>
+Shows conversation history
+<h3>Stats</h3>
+Shows system statistics
+<h3>Github</h3>
+Opens Jimbot Github repository
+<h3>Jimbot logo</h3>
+Press this button to speak voice commands
+<h2>Useful Commands:</h2>
+<h3>Spell</h3>
+Spell words
+<h3>Kill/Close</h3>
+Kills a process
+<h3>Run/Open</h3>
+Runs a command
+<h3>Voice Type</h3>
+Allows the user to type with their voice.
+<h3>Joke</h3>
+Tells a joke
+<h3>Time</h3>
+Tells the time
+<h3>Google Search</h3>
+Say "Google Search" and then say what you want to search
+<h3>General Insults</h3>
+Makes him mad (to make him happy again, apologize)
+<h3>General Compliments</h3>
+Makes him happy
+<h3>Note</h3>
+If you type the @ sign and then text, it will run the text like a voice command.
 <br>
-Spelling
-<br>
-Calculator
-<br>
-New editor function! add your own commands, words, and downloaded music!
-<br>
-+lots more!
+Example: typing "@ hello" is the equivalent of saying "hello" to Jimbot
