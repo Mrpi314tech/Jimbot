@@ -156,8 +156,7 @@ try:
 except:
     print("Could not get your info. Try retaking the survey")
     time.sleep(1)
-    os.system('sudo killall -9 python3')
-    os.system('sudo killall -9 ~/Hotword/main')
+    os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
     exit()
 # Simple grammar
 verb="act answer approve arrange break build buy color cough create complete cry dance describe draw drink eat edit enter exit imitate invent jump laugh lie listen paint plan play read replace run scream see shop shout sing skip sleep sneeze solve study teach touch turn walk win write whistle yank zip concern decide dislike doubt feel forget hate hear hope impress know learn like look love mind notice own perceive realize recognize remember see smell surprise please prefer promise think understand am appear are be become been being feel grow is look remain seem smell sound stay taste turn was were can could may might must ought to shall should will would"
@@ -260,8 +259,7 @@ def question(qstn):
         for proc in psutil.process_iter():
             if proc.name() == "display":
                 proc.kill()
-        os.system('sudo killall -9 python3')
-        os.system('sudo killall -9 ~/Hotword/main')
+        os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
         exit()
     elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
         screen('I am doing great!')
@@ -1042,8 +1040,7 @@ while True:
                     break
         # Set up buttons
         elif event.type == pygame.QUIT:
-            os.system('sudo killall -9 python3')
-            os.system('sudo killall -9 ~/Hotword/main')
+            os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
             sys.exit()
         elif f10k==True or keypressed == False and (event.type == pygame.MOUSEBUTTONDOWN or spekret ==1 or event.type == pygame.KEYDOWN):                
             x, y = pygame.mouse.get_pos()
@@ -1080,8 +1077,7 @@ while True:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh &')
                 prints('exiting...')
-                os.system('sudo killall -9 python3')
-                os.system('sudo killall -9 ~/Hotword/main')
+                os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
                 exit()
             if f10k == True or x >=265 and x<= 340 and y >= 340 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
