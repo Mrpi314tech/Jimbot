@@ -415,6 +415,7 @@ def question(qstn):
         screen('look in shell\nfor result')
         moodometer=[1,2,3,4,5]
     elif 'Google search' in qstn or 'google search' in qstn:
+        r=sr.Recognizer()
         try:
             with sr.Microphone() as source:
                 r.adjust_for_ambient_noise(source)
@@ -575,6 +576,7 @@ def question(qstn):
         moodometer=[1,2,3,4,5]
     elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
         screen('Would you like me to search that?')
+        r=sr.Recognizer()
         try:
             with sr.Microphone() as source:
                 r.adjust_for_ambient_noise(source)
