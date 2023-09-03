@@ -36,34 +36,21 @@ sudo apt install fswebcam
 sudo apt-get install htop
 echo 'type "y" if it asks you a question: '
 rm -r ~/Jimbot/.git
-echo "Now you will take a survey to help Jimbot get to know you"
-sleep 3
-python3 ~/Jimbot/Welcome/Survey.py
-echo "the survey is over."
-read -p "is the information correctly answered? (y/n)" gsy
-while true; do
-	if [[ $qsy == *"n"* ]]
-	then
-		echo "retaking survey"
-		python3 ~/Jimbot/Welcome/Survey.py
-	else
-		echo "#!/bin/bash
-		~/Jimbot/Jimbot"' "$@"' | sudo tee /usr/local/bin/Jimbot -p /usr/local/bin
-		sudo chmod +x /usr/local/bin/Jimbot
-		mkdir -p ~/.local/share/applications
-		echo "[Desktop Entry]
-		Name=Jimbot
-		Comment=Jimbot the AI
-		Exec=Jimbot
-		Icon=${location}/Jimbot/images/Jimbot.png
-		Terminal=false
-		Type=Application
-		Categories=System;
-		StartupNotify=true" > ~/.local/share/applications/Jimbot.desktop
-		echo "done"
-		echo "Jimbot is installed!"
-		echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
-		sleep 10
-		exit 1
-	fi
+echo "#!/bin/bash
+~/Jimbot/Jimbot"' "$@"' | sudo tee /usr/local/bin/Jimbot -p /usr/local/bin
+sudo chmod +x /usr/local/bin/Jimbot
+mkdir -p ~/.local/share/applications
+echo "[Desktop Entry]
+Name=Jimbot
+Comment=Jimbot the AI
+Exec=Jimbot
+Icon=${location}/Jimbot/images/Jimbot.png
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true" > ~/.local/share/applications/Jimbot.desktop
+echo "done"
+echo "Jimbot is installed!"
+echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
+sleep 10
 done

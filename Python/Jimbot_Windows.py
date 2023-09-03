@@ -135,29 +135,10 @@ except:
         import Welcome.info as info
     except:
         import Jimbot.Welcome.info as info
-if info.ask_for_password == True:
-    while True:
-        nope=input('what is the password? ')
-        if nope == info.password:
-            break
-        else:
-            print('Wrong password!')
-else:
-    pass
 try:
-    location=info.file_location
-    kasaip=info.ip_for_kasa
-    kasa_name=info.name_for_smart_device
     your_name = info.your_name
-    name=info.name
-    city=info.city
-    apikey=info.api
-    username=location
 except:
-    print("Could not get your info. Try retaking the survey")
-    time.sleep(1)
-    os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
-    exit()
+    os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Welcome/Survey.py')
 # Simple grammar
 verb="act answer approve arrange break build buy color cough create complete cry dance describe draw drink eat edit enter exit imitate invent jump laugh lie listen paint plan play read replace run scream see shop shout sing skip sleep sneeze solve study teach touch turn walk win write whistle yank zip concern decide dislike doubt feel forget hate hear hope impress know learn like look love mind notice own perceive realize recognize remember see smell surprise please prefer promise think understand am appear are be become been being feel grow is look remain seem smell sound stay taste turn was were can could may might must ought to shall should will would"
 notnoun="for and nor but or yet so a an the and do I he him her tell we they it who what where when why how me she you my"+verb.lower()
@@ -172,10 +153,10 @@ def speak(say):
 r=sr.Recognizer()
 # Take picture
 print('Picture stored at Jimbot/images')
-os.system("fswebcam -r 1280x720 --no-banner "+username+"/Jimbot/images/secure.jpg")
+os.system("fswebcam -r 1280x720 --no-banner ~/Jimbot/images/secure.jpg")
 # Fart
 def stinky():
-    os.system('xdg-open '+username+'/Jimbot/sounds/fart.mp3')
+    os.system('xdg-open ~/Jimbot/sounds/fart.mp3')
 # Find weather
 def weather():
     global weather
@@ -411,7 +392,7 @@ def question(qstn):
         stinky()
         moodometer=[1,2,3,4,4,5,5]
     elif 'picture' in qstn:
-        os.system("fswebcam -r 1280x720 --no-banner "+username+"/Pictures/AI.jpg")
+        os.system("fswebcam -r 1280x720 --no-banner ~/Pictures/AI.jpg")
         screen('look in shell\nfor result')
         moodometer=[1,2,3,4,5]
     elif 'Google search' in qstn or 'google search' in qstn:
@@ -511,10 +492,10 @@ def question(qstn):
         screen('thanks')
         moodometer=[1,2,3,4,4,4]
     elif 'bomb' in qstn:
-        os.system('xdg-open '+username+'/Jimbot/sounds/explosions.mp3')
+        os.system('xdg-open ~/Jimbot/sounds/explosions.mp3')
         moodometer=[1,2,3,4,5]
     elif 'roar' in qstn:
-        os.system('xdg-open '+username+'/Jimbot/sounds/Lion.mp3')
+        os.system('xdg-open ~/Jimbot/sounds/Lion.mp3')
         moodometer=[1,2,3,4]
     elif qstn == 'nice':
         screen('Thank you')
