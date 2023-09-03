@@ -1,4 +1,6 @@
 <body style="background-color:lightblue;">
+<h1>Note</h1>
+  Jimbot is still under development. Wait until the first release to download it.
 <h1>Jimbot</h1>
 "Control your computer, with your voice."
 <h1></h1>
