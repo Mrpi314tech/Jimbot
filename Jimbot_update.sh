@@ -4,7 +4,6 @@ mv ~/Jimbot/Python/new_words.py ~
 mv ~/Jimbot/Welcome/info.py ~
 mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Python/skills ~
-echo 'type "y" if it asks you a question: '
 rm -r ~/Jimbot
 git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
@@ -23,7 +22,6 @@ echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
 chmod +x ~/Jimbot/Jimbot
 chmod +x ~/Jimbot/Jimbot_remove.sh
 chmod +x ~/Jimbot/Jimbot_install.sh
-echo 'type "y" if it asks you a question: '
 sudo rm -r ~/Jimbot/.git
 chmod +x ~/Jimbot/Jimbot_update.sh
 mv ~/Jimbot/Jimbot_update.sh ~
