@@ -18,6 +18,11 @@ Jimbot is a virtual assistant for your computer. It can do many things, like ope
 <br>
 <h2>To install:</h2>
   Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.0.0/Install.sh'>this file</a> and execute it.
+  <br>
+  Or run this command:
+  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.0.0/Install.sh
+chmod +x Install.sh
+./Install.sh</code></pre>
 <h3>To Update</h3>
 Presss the icon in the lower right corner
 <h3>To uninstall</h3>
