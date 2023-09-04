@@ -24,6 +24,6 @@ chmod +x ~/Jimbot/Jimbot
 chmod +x ~/Jimbot/Jimbot_remove.sh
 chmod +x ~/Jimbot/Jimbot_install.sh
 echo 'type "y" if it asks you a question: '
-rm -r ~/Jimbot/.git
+sudo rm -r ~/Jimbot/.git
 chmod +x ~/Jimbot/Jimbot_update.sh
 mv ~/Jimbot/Jimbot_update.sh ~
