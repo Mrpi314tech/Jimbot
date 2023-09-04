@@ -34,7 +34,6 @@ sudo pip install keyboard
 sudo apt-get install wmctrl
 sudo apt install fswebcam
 sudo apt-get install htop
-echo 'type "y" if it asks you a question: '
 sudo rm -r ~/Jimbot/.git
 echo "#!/bin/bash
 ~/Jimbot/Jimbot"' "$@"' | sudo tee /usr/local/bin/Jimbot -p /usr/local/bin
