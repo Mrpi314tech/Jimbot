@@ -225,14 +225,14 @@ def question(qstn):
                 except IndexError:
                     break
             break
-        moodometer=[1,2,3,4]
+        moodometer=[1,2,3,4,6]
     if 'spell' in qstn:
         try:
             htspl=qstn.split('spell ')
             spell(htspl[1])
         except:
             pass
-        moodometer=[1,2,3,4,5,6]
+        moodometer=[1,2,3,4,6]
     elif 'you' in qstn and 'doing' in qstn and 'what' in qstn:
         gtdt()
         moodometer=[1,2,3,4,5]
@@ -322,6 +322,7 @@ def question(qstn):
                 pr.write(saidtxt)
         except:
             pass
+        moodometer=[1,2,3,4,6]
     elif 'kill' in qstn or 'till' in qstn or 'close' in qstn:
         if 'till' in qstn:
             screen('assuming you ment "Kill"...')
