@@ -304,10 +304,14 @@ def question(qstn):
             oqstno=qstn
         try:
             screen('running command '+qstn.replace('run', ''))
-            os.system((oqstno.split('run ')[1]).replace(' ', '')+' &')
-            os.system((oqstno.split('run ')[1]).replace(' ', '-')+' &')
-            os.system((oqstno.split('run ')[1]).replace(' ', '/')+' &')
-            os.system((oqstno.split('run ')[1])+' &')
+            if ' ' in oqstno.split('run ')[1]:
+                os.system((oqstno.split('run ')[1]).replace(' ', '')+' &')
+                os.system((oqstno.split('run ')[1]).replace(' ', '-')+' &')
+                os.system((oqstno.split('run ')[1]).replace(' ', '/')+' &')
+                os.system((oqstno.split('run ')[1]).replace(' ', '_')+' &')
+                os.system((oqstno.split('run ')[1])+' &')
+            else:
+                os.system(oqstno.split('run ')[1])
         except IndexError:
             screen('To run a command, say "run" and then the command')
         moodometer=[1,2,3,4,6]
