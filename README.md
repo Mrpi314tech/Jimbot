@@ -4,8 +4,6 @@
 <h1></h1>
 <img src="https://raw.githubusercontent.com/Mrpi314tech/Jimbot/main/images/Jimbot.png" alt="Jimbot logo">
 <br>
-<a href='https://github.com/Mrpi314tech/Jimbot'><button>Github</button></a>
-<br>
 Welcome to Jimbot!
 Jimbot is a virtual assistant for your computer. It can do many things, like open an application, run a command, type with your voice, search things on google, and much more.
 <br>
