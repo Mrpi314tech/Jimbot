@@ -25,7 +25,7 @@ sudo apt-get install portaudio19-dev
 sudo apt-get install xterm
 sudo pip install pyaudio
 pip install struct
-pip install xdotool
+sudo apt-get install xdotool
 pip install pvporcupine
 pip install pillow
 sudo apt-get install alsa-utils
