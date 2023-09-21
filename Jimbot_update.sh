@@ -5,6 +5,8 @@ mv ~/Jimbot/Welcome/info.py ~
 mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Python/skills ~
 rm -r ~/Jimbot
+echo "adding new packages"
+pip install pynput
 git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
 rm ~/Jimbot/Welcome/info.py
