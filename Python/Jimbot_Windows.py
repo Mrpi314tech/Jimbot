@@ -1036,9 +1036,9 @@ while True:
             if brkbt==True or event.type == pygame.KEYDOWN or keypressed==True:
                 brkbt=False
                 break
-            elif x >=700 and y <= 35 and not spekret == 1:
+            elif f10k==False and x >=700 and y <= 35 and not spekret == 1:
                 os.system('xdg-open https://github.com/Mrpi314tech/Jimbot &')
-            elif x >=400 and x<= 515 and y >= 40 and y <= 100 and not spekret == 1:
+            elif f10k==False and x >=400 and x<= 515 and y >= 40 and y <= 100 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal python3 '+file_location+'/Jimbot/Python/Jimbotedit.py &')
                 try:
                     import new_words as aword
@@ -1050,19 +1050,17 @@ while True:
                     import Python.new_com as acom
                 nwcoml=acom.word
                 nrunl=acom.com
-            elif x >=590 and x<= 685 and y >= 40 and y <= 90 and not spekret == 1:
+            elif f10k==False and x >=590 and x<= 685 and y >= 40 and y <= 90 and not spekret == 1:
                 os.system("xdg-open "+file_location+"/Jimbot/images/HowTo.jpg &")
-            elif x >=400 and x<= 570 and y >= 150 and y <= 200 and not spekret == 1:
+            elif f10k==False and x >=400 and x<= 570 and y >= 150 and y <= 200 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal "cat ~/Jimbot/Python/skills/history.py && sleep 300" &')
-            elif x >= 600 and x<=680 and y<=30:
-                os.system('xdg-open https://github.com/Mrpi314tech/Jimbotskills &')
-            elif x<=45 and y>=200 and y<=230:
+            elif f10k==False and x<=45 and y>=200 and y<=230:
                 os.system('~/Jimbot/Bash/Jimbotterminal htop &')
-            elif x>=400 and y>=250 and y<=280 and x<=535:
+            elif f10k==False and x>=400 and y>=250 and y<=280 and x<=535:
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot/Bash/schedule.sh &')
-            elif x<75 and y>=80 and y<=110:
+            elif f10k==False and x<75 and y>=80 and y<=110:
                 os.system('python3 ~/Jimbot/Python/stats.py &')
-            elif x>=770 and y>=370:
+            elif f10k==False and x>=770 and y>=370:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh &')
                 prints('exiting...')
