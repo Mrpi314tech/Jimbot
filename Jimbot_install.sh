@@ -24,6 +24,7 @@ sudo apt install espeak
 sudo apt-get install portaudio19-dev
 sudo apt-get install xterm
 sudo pip install pyaudio
+pip install pynput
 pip install struct
 sudo apt-get install xdotool
 pip install pvporcupine
