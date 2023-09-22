@@ -4,6 +4,7 @@ mv ~/Jimbot/Python/new_words.py ~
 mv ~/Jimbot/Welcome/info.py ~
 mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Python/skills ~
+mv ~/Jimbot/Hotword/Jimbot.ppn ~
 rm -r ~/Jimbot
 echo "adding new packages"
 pip install pynput
@@ -17,6 +18,7 @@ mv ~/skills ~/Jimbot/Python
 mv ~/new_words.py ~/Jimbot/Python
 mv ~/info.py ~/Jimbot/Welcome
 mv ~/new_com.py ~/Jimbot/Python
+mv ~/Jimbot.ppn ~/Jimbot/Hotword
 mv ~/Jimbot_update.sh ~/delete_this_file-Jimbot
 echo "done"
 echo "Jimbot is installed!"
