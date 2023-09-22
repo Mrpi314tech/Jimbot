@@ -12,6 +12,15 @@ chmod +x "${location}/Jimbot/Jimbot_remove.sh"
 mv ~/Jimbot/Jimbot_update.sh ~
 chmod +x "${location}/Jimbot_update.sh"
 echo "Welcome to Jimbot!"
+echo "Are you installing for Raspberry pi (ARM) or other? (Linux x86): "
+read -p "(Type 'raspberry pi' or 'other')" input
+input=$(echo "$input" | tr '[:upper:]' '[:lower:]')
+if [[ $input == *rasp* ]]; then
+    mv ~/Jimbot/Hotword/JimbotRaspberrypi.ppn ~/Jimbot/Hotword/Jimbot.ppn
+else
+    mv ~/Jimbot/Hotword/JimbotLinux.ppn ~/Jimbot/Hotword/Jimbot.ppn
+fi
+
 sleep 3
 echo "this will download some packages"
 sleep 3
