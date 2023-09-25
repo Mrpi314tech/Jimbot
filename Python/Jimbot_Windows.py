@@ -844,7 +844,7 @@ def refresh():
     display_surface.blit(dowb, (770, 370))
     imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
     img= pygame.transform.scale(imp, (75, 75))
-    display_surface.blit(img, (265, gameypos))
+    display_surface.blit(img, (265, 330))
     pygame.display.update()
 # Finished the hard stuff
 print('Process completed')
@@ -864,6 +864,47 @@ def print(bpg):
         pygame.display.update()
     else:
         pass
+#Easter egg
+ax1=random.choice(range(0,800))
+ay1=0
+
+ax2=random.choice(range(0,800))
+ay2=random.choice(range(-100,0))
+
+ax3=random.choice(range(0,800))
+ay3=random.choice(range(-200,-100))
+
+ax4=random.choice(range(0,800))
+ay4=random.choice(range(-300,-200))
+
+ax5=random.choice(range(0,800))
+ay5=random.choice(range(-500,-400))
+def game():
+    backg = pygame.image.load(backgn).convert()
+    backg= pygame.transform.scale(backg, (800, 400))
+    display_surface.blit(backg, (0, 0))
+    display_surface.blit(header, textRect)
+    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
+    img= pygame.transform.scale(imp, (75, 75))
+    display_surface.blit(img, (gameypos, 330))
+    
+    asteroid=pygame.image.load(file_location+"/Jimbot/images/asteroid.png").convert_alpha()
+    rock1=pygame.transform.scale(asteroid, (75, 75))
+    display_surface.blit(rock1, (ax1, ay1),)
+    
+    rock2=pygame.transform.scale(asteroid, (75, 75))
+    display_surface.blit(rock2, (ax2, ay2),)
+    
+    rock3=pygame.transform.scale(asteroid, (75, 75))
+    display_surface.blit(rock3, (ax3, ay3),)
+    
+    rock4=pygame.transform.scale(asteroid, (75, 75))
+    display_surface.blit(rock4, (ax4, ay4),)
+    
+    rock5=pygame.transform.scale(asteroid, (75, 75))
+    display_surface.blit(rock5, (ax5, ay5),)
+    
+    pygame.display.update()
 # Define variables that will be used for different things
 TM_var="TM"
 spekret=0
@@ -877,7 +918,7 @@ user_text=''
 resthre=0
 spekretno=0
 brkbt=False
-gameypos=330
+gameypos=265
 refresh()
 f10k=False
 # No longer defining things
@@ -925,23 +966,67 @@ while True:
     else:
         TM_var="TM"
         refresh()
-    # Easter egg
-    if gameypos <= 329 and not (event.type == pygame.KEYDOWN and event.key == pygame.K_UP):
-        gameypos+=20
-    elif gameypos >= 331:
-        gameypos=330
     # Set up buttons and inputs
     brk =0
     for event in pygame.event.get():
         # Easter egg
-        if event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
-            gameypos-=50
-            refresh()
-            time.sleep(0.05)
-            gameypos-=50
-            refresh()
-            spekretno=0
-            keypressed=True
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+            while True:
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
+                        if gameypos >= -34 and event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+                            gameypos-=50
+                            game()
+                            spekretno=0
+                            keypressed=True
+                        if gameypos <= 764 and event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                            gameypos+=50
+                            game()
+                            spekretno=0
+                            keypressed=True
+                diez1=gameypos
+                diez2=gameypos
+                diez1-=38
+                diez2+=38
+                
+                ay1+=20
+                if ay1 >= 400:
+                    ax1=random.choice(range(0,800))
+                    ay1=0
+                if ay1 >= 325 and ax1 >= diez1 and ax1 <= diez2:
+                    break
+                
+                ay2+=20
+                if ay2 >= 400:
+                    ax2=random.choice(range(0,800))
+                    ay2=0
+                if ay2 >= 325 and ax2 >= diez1 and ax2 <= diez2:
+                    break
+                    
+                ay3+=20
+                if ay3 >= 400:
+                    ax3=random.choice(range(0,800))
+                    ay3=0
+                if ay3 >= 325 and ax3 >= diez1 and ax3 <= diez2:
+                    break
+                    
+                ay4+=20
+                if ay4 >= 400:
+                    ax4=random.choice(range(0,800))
+                    ay4=0
+                if ay4 >= 325 and ax4 >= diez1 and ax4 <= diez2:
+                    break
+                    
+                ay5+=20
+                if ay5 >= 400:
+                    ax5=random.choice(range(0,800))
+                    ay5=0
+                if ay5 >= 325 and ax5 >= diez1 and ax5 <= diez2:
+                    break
+                
+                game()
+            print('Game Over')
+            time.sleep(5)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
