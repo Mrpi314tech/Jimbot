@@ -970,6 +970,20 @@ while True:
     brk =0
     for event in pygame.event.get():
         # Easter egg
+        ax1=random.choice(range(0,800))
+        ay1=0
+
+        ax2=random.choice(range(0,800))
+        ay2=random.choice(range(-100,0))
+
+        ax3=random.choice(range(0,800))
+        ay3=random.choice(range(-200,-100))
+
+        ax4=random.choice(range(0,800))
+        ay4=random.choice(range(-300,-200))
+
+        ax5=random.choice(range(0,800))
+        ay5=random.choice(range(-500,-400))
         if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             while True:
                 for event in pygame.event.get():
@@ -988,7 +1002,7 @@ while True:
                 diez2=gameypos
                 diez1-=38
                 diez2+=38
-                
+                time.sleep(0.05)
                 ay1+=20
                 if ay1 >= 400:
                     ax1=random.choice(range(0,800))
@@ -1026,7 +1040,7 @@ while True:
                 
                 game()
             print('Game Over')
-            time.sleep(5)
+            time.sleep(3)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
