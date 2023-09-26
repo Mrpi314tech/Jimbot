@@ -879,6 +879,8 @@ ay4=random.choice(range(-300,-200))
 
 ax5=random.choice(range(0,800))
 ay5=random.choice(range(-500,-400))
+
+gamescore=0
 def game():
     backg = pygame.image.load(backgn).convert()
     backg= pygame.transform.scale(backg, (800, 400))
@@ -984,6 +986,7 @@ while True:
 
         ax5=random.choice(range(0,800))
         ay5=random.choice(range(-500,-400))
+        gamescore=0
         if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             while True:
                 for event in pygame.event.get():
@@ -1007,6 +1010,7 @@ while True:
                 if ay1 >= 400:
                     ax1=random.choice(range(0,800))
                     ay1=0
+                    gamescore+=1
                 if ay1 >= 325 and ax1 >= diez1 and ax1 <= diez2:
                     break
                 
@@ -1014,6 +1018,7 @@ while True:
                 if ay2 >= 400:
                     ax2=random.choice(range(0,800))
                     ay2=0
+                    gamescore+=1
                 if ay2 >= 325 and ax2 >= diez1 and ax2 <= diez2:
                     break
                     
@@ -1021,6 +1026,7 @@ while True:
                 if ay3 >= 400:
                     ax3=random.choice(range(0,800))
                     ay3=0
+                    gamescore+=1
                 if ay3 >= 325 and ax3 >= diez1 and ax3 <= diez2:
                     break
                     
@@ -1028,6 +1034,7 @@ while True:
                 if ay4 >= 400:
                     ax4=random.choice(range(0,800))
                     ay4=0
+                    gamescore+=1
                 if ay4 >= 325 and ax4 >= diez1 and ax4 <= diez2:
                     break
                     
@@ -1035,17 +1042,16 @@ while True:
                 if ay5 >= 400:
                     ax5=random.choice(range(0,800))
                     ay5=0
+                    gamescore+=1
                 if ay5 >= 325 and ax5 >= diez1 and ax5 <= diez2:
                     break
                 
                 game()
-            print('Game Over')
+            print('Game over. Score: '+str(gamescore))
             time.sleep(3)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-            break
-        elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             break
         # Set up input box
         elif event.type == pygame.KEYDOWN:
