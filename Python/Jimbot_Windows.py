@@ -242,7 +242,7 @@ def question(qstn):
         for proc in psutil.process_iter():
             if proc.name() == "display":
                 proc.kill()
-        os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
+        os.system('sudo pkill -f Jimbot')
         exit()
     elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
         screen('I am doing great!')
@@ -1135,7 +1135,7 @@ while True:
                     break
         # Set up buttons
         elif event.type == pygame.QUIT:
-            os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
+            os.system('sudo pkill -f Jimbot')
             sys.exit()
         elif f10k==True or keypressed == False and (event.type == pygame.MOUSEBUTTONDOWN or spekret ==1 or event.type == pygame.KEYDOWN):                
             x, y = pygame.mouse.get_pos()
@@ -1170,7 +1170,7 @@ while True:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh &')
                 prints('exiting...')
-                os.system('sudo killall -9 /bin/python3 && sudo killall -9 python3')
+                os.system('sudo pkill -f Jimbot')
                 exit()
             if f10k == True or x >=265 and x<= 340 and y >= 340 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
