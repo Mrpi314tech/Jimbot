@@ -1222,7 +1222,7 @@ while True:
                 switchsize=1
             elif f10k==False and x>=770 and y>=370:
                 print('Updating Jimbot...')
-                os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh &')
+                os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh')
                 prints('exiting...')
                 os.system('sudo pkill -f Jimbot')
                 exit()
