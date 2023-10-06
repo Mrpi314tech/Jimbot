@@ -822,7 +822,26 @@ def bible():
     except KeyError:
         screen('that verse does not exist')
 # Define refresh function
+size=1
+switchsize=0
 def refresh():
+    global size
+    global switchsize
+    if size == 1:
+        normal()
+        if switchsize == 1:
+            X = 800
+            Y = 400
+            display_surface = pygame.display.set_mode((X, Y))
+            switchsize=0  
+    elif size == 2:
+        minimize()
+        if switchsize == 1:
+            X = 300
+            Y = 150
+            display_surface = pygame.display.set_mode((X, Y))
+            switchsize=0
+def normal():
     backg = pygame.image.load(backgn).convert()
     backg= pygame.transform.scale(backg, (800, 400))
     display_surface.blit(backg, (0, 0))
@@ -839,6 +858,10 @@ def refresh():
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Stats", True, blue, white), (0, 80))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(TM_var, True, blue, white), (0, 200))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Schedule", True, blue, white), (400, 250))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, blue, white), (600, 0))
+    header = font.render('Jimbot', True, white)
+    textRect = header.get_rect()
+    textRect.center = (180, 20)
     display_surface.blit(header, textRect)
     dowb = pygame.image.load(file_location+"/Jimbot/images/downloadbutton.png").convert()
     dowb= pygame.transform.scale(dowb, (30, 30))
@@ -847,10 +870,29 @@ def refresh():
     img= pygame.transform.scale(imp, (75, 75))
     display_surface.blit(img, (265, 330))
     pygame.display.update()
+def minimize():
+    global header
+    global textRect
+    global font
+    backg = pygame.image.load(backgn).convert()
+    backg= pygame.transform.scale(backg, (300, 150))
+    display_surface.blit(backg, (0, 0))
+    header = font.render('Jimbot', True, white)
+    textRect = header.get_rect()
+    textRect.center = (60, 20)
+    display_surface.blit(header, textRect)
+    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
+    img= pygame.transform.scale(imp, (75, 75))
+    display_surface.blit(img, (0, 330))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 32).render(currentTime, True, white), (150, 0))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white), (150, 30))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 15).render("Back", True, blue, white), (265, 135))
+    pygame.display.update()
 # Finished the hard stuff
 print('Process completed')
 # Redefine print to the gui
 def print(bpg):
+    global size
     global font
     global X
     global white
@@ -861,7 +903,10 @@ def print(bpg):
         tdply=bpg+"                                                                                                                             "
         bpg1 = font.render(tdply, True, white)
         thi = bpg1.get_rect()
-        display_surface.blit(bpg1, (20, 300))
+        if size == 1:
+            display_surface.blit(bpg1, (20, 300))
+        else:
+            display_surface.blit(bpg1, (0, 120))
         pygame.display.update()
     else:
         pass
@@ -1080,7 +1125,7 @@ while True:
                 if spekret == 1:
                     break
                 for event in pygame.event.get():
-                    if event.type == pygame.KEYDOWN:
+                    if event.type == pygame.KEYDOWN and size == 1:
                         brkbt=True
                         refresh()
                         display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
@@ -1166,6 +1211,12 @@ while True:
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot/Bash/schedule.sh &')
             elif f10k==False and x<75 and y>=80 and y<=110:
                 os.system('python3 ~/Jimbot/Python/stats.py &')
+            elif f10k==False and x>=600 and x<=685 and y<=15:
+                size=2
+                switchsize=1
+            elif f10k==False and x>=265 and y>=135 and size ==2:
+                size=1
+                switchsize=1
             elif f10k==False and x>=770 and y>=370:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh &')
