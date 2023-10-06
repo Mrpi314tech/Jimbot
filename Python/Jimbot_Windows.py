@@ -1035,6 +1035,8 @@ while True:
         gamescore=0
         if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             while True:
+                if size==2:
+                    break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if gameypos >= -34 and event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
@@ -1093,8 +1095,9 @@ while True:
                     break
                 
                 game()
-            print('Game over. Score: '+str(gamescore))
-            time.sleep(3)
+            if size == 1:
+                print('Game over. Score: '+str(gamescore))
+                time.sleep(3)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
