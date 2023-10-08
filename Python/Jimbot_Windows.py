@@ -1105,27 +1105,27 @@ while True:
         # Set up input box
         elif event.type == pygame.KEYDOWN:
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_BACKSPACE:
+                if f10k==False and event.key == pygame.K_F10:
+                    f10k=True
+                    brk=1
+                elif f10k==False and event.key == pygame.K_BACKSPACE:
                     user_text = user_text[:-1]
                     if user_text == '':
                         brk =1
                     keypressed=True
-                elif event.key == pygame.K_F10 and f10k == False:
-                    f10k=True
-                    brk=1
-                elif event.key == pygame.K_RETURN or event.key == pygame.K_F10:
+                elif f10k == False and event.key == pygame.K_RETURN:
                     spekret=1
                     spekretno=0
                     keypressed=True
                     brk=1
-                else:
+                elif f10k==False:
                     user_text += event.unicode
                     keypressed=True
                 refresh()
                 display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                 pygame.display.update()
             while True:
-                if spekret == 1:
+                if spekret == 1 or brk == 1:
                     break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and size == 1:
@@ -1226,10 +1226,9 @@ while True:
                 prints('exiting...')
                 os.system('sudo pkill -f Jimbot')
                 exit()
-            if f10k == True and keypressed == False or x >=265 and x<= 340 and y >= 340 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
+            if f10k == True or x >=265 and x<= 340 and y >= 340 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
                 # Reset variables
-                f10k=False
                 spekret=0
                 spekretno=0
                 # Play sound
@@ -1272,6 +1271,7 @@ while True:
                 history.write('jsaid='+str(jsaid)+"\n"+'rsponce='+str(rsponce)+"\n"+'crsponce='+str(crsponce))
                 history.close()
                 ml=most_frequent(data)
+                f10k=False
     # Reset varaible that senses the enter key
     spekretno=0
     # Update GUI
