@@ -71,8 +71,8 @@ import pygame
 pygame.init()
 white = (255, 255, 255)
 green = (0, 255, 0)
-blue = (0, 0, 128)
-X = 800
+blue = (56, 182, 255)
+X = 500
 Y = 400
 window_icon=pygame.image.load(file_location+'/Jimbot/images/Jimbot.png')
 display_surface = pygame.display.set_mode((X, Y))
@@ -81,23 +81,60 @@ pygame.display.set_icon(window_icon)
 font = pygame.font.Font('freesansbold.ttf', 32)
 header = font.render('Jimbot', True, white)
 textRect = header.get_rect()
-textRect.center = (180, 20)
+textRect.center = (250, 20)
 backg = pygame.image.load(backgn).convert()
 backg= pygame.transform.scale(backg, (800, 400))
-display_surface.fill(blue)
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 60).render("Edit", True, blue, white), (400, 40))
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Github", True, blue, white), (700, 0))
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render("History", True, blue, white), (400, 150))
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render(currentTime, True, white, blue), (585, 150))
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white, blue), (590, 200))
-display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render("Info", True, blue, white), (590, 40))
+display_surface.blit(backg, (-150, 0))
+    
+edit = pygame.image.load(file_location+"/Jimbot/images/Edit.png").convert_alpha()
+edit= pygame.transform.scale(edit, (120, 75))
+display_surface.blit(edit, (100, 35))
+    
+history = pygame.image.load(file_location+"/Jimbot/images/History.png").convert_alpha()
+history= pygame.transform.scale(history, (120, 75))
+display_surface.blit(history, (100, 195))
+    
+stats = pygame.image.load(file_location+"/Jimbot/images/Stats.png").convert_alpha()
+stats= pygame.transform.scale(stats, (120, 75))
+display_surface.blit(stats, (290, 35))
+    
+info = pygame.image.load(file_location+"/Jimbot/images/Info.png").convert_alpha()
+info= pygame.transform.scale(info, (40, 25))
+display_surface.blit(info, (0, 0))
+    
+        
+schedule = pygame.image.load(file_location+"/Jimbot/images/Schedule.png").convert_alpha()
+schedule= pygame.transform.scale(schedule, (120, 75))
+display_surface.blit(schedule, (290, 195))
+    
+    
+clock=pygame.font.Font('freesansbold.ttf', 50).render(currentTime, True, white)
+clockRect=clock.get_rect()
+clockRect.center=(250,145)
+display_surface.blit(clock, clockRect)
+    
+clockb=pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white)
+clockRectb=clockb.get_rect()
+clockRectb.center=(250,175)
+display_surface.blit(clockb, clockRectb)
+    
+display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, white, blue), (0, 380))
+    
 display_surface.blit(header, textRect)
-pygame.draw.line(display_surface, white,
-                 [300, 300],
-                 [300, 0], 10)
+    
+dowb = pygame.image.load(file_location+"/Jimbot/images/downloadbutton.png").convert()
+dowb= pygame.transform.scale(dowb, (30, 30))
+display_surface.blit(dowb, (470, 370))
+    
 imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
 img= pygame.transform.scale(imp, (75, 75))
-display_surface.blit(img, (265, 330))
+display_surface.blit(img, (212.5, 325))
+    
+github = pygame.image.load(file_location+"/Jimbot/images/github.png").convert_alpha()
+github= pygame.transform.scale(github, (50, 50))
+pygame.draw.circle(display_surface, white, (475, 25),(23))
+display_surface.blit(github, (450, 0))
+    
 pygame.display.flip()
 pygame.display.update()
 # Print to the GUI
@@ -111,7 +148,7 @@ def print(bpg):
         tdply=bpg+"                                                                                                                             "
         bpg1 = font.render(tdply, True, white, blue)
         thi = bpg1.get_rect()
-        display_surface.blit(bpg1, (20, 300))
+        display_surface.blit(bpg1, (0, 300))
         pygame.display.update()
     else:
         pass
@@ -830,7 +867,7 @@ def refresh():
     if size == 1:
         normal()
         if switchsize == 1:
-            X = 800
+            X = 500
             Y = 400
             display_surface = pygame.display.set_mode((X, Y))
             switchsize=0  
@@ -842,33 +879,62 @@ def refresh():
             display_surface = pygame.display.set_mode((X, Y))
             switchsize=0
 def normal():
-    backg = pygame.image.load(backgn).convert()
-    backg= pygame.transform.scale(backg, (800, 400))
-    display_surface.blit(backg, (0, 0))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 60).render("Edit", True, blue, white), (400, 40))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Github", True, blue, white), (700, 0))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render("History", True, blue, white), (400, 150))
-    if backgn == file_location+"/Jimbot/images/background.jpg":
-        display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render(currentTime, True, white), (585, 150))
-        display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white), (590, 200))
-    else:
-        display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render(currentTime, True, blue), (585, 150))
-        display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, blue), (590, 200))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 50).render("Info", True, blue, white), (590, 40))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Stats", True, blue, white), (0, 80))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(TM_var, True, blue, white), (0, 200))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("Schedule", True, blue, white), (400, 250))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, blue, white), (600, 0))
     header = font.render('Jimbot', True, white)
     textRect = header.get_rect()
-    textRect.center = (180, 20)
+    textRect.center = (250, 20)
+    backg = pygame.image.load(backgn).convert()
+    backg= pygame.transform.scale(backg, (800, 400))
+    display_surface.blit(backg, (-150, 0))
+    
+    edit = pygame.image.load(file_location+"/Jimbot/images/Edit.png").convert_alpha()
+    edit= pygame.transform.scale(edit, (120, 75))
+    display_surface.blit(edit, (100, 35))
+    
+    history = pygame.image.load(file_location+"/Jimbot/images/History.png").convert_alpha()
+    history= pygame.transform.scale(history, (120, 75))
+    display_surface.blit(history, (100, 195))
+    
+    stats = pygame.image.load(file_location+"/Jimbot/images/Stats.png").convert_alpha()
+    stats= pygame.transform.scale(stats, (120, 75))
+    display_surface.blit(stats, (290, 35))
+    
+    info = pygame.image.load(file_location+"/Jimbot/images/Info.png").convert_alpha()
+    info= pygame.transform.scale(info, (40, 25))
+    display_surface.blit(info, (0, 0))
+    
+        
+    schedule = pygame.image.load(file_location+"/Jimbot/images/Schedule.png").convert_alpha()
+    schedule= pygame.transform.scale(schedule, (120, 75))
+    display_surface.blit(schedule, (290, 195))
+    
+    
+    clock=pygame.font.Font('freesansbold.ttf', 50).render(currentTime, True, white)
+    clockRect=clock.get_rect()
+    clockRect.center=(250,145)
+    display_surface.blit(clock, clockRect)
+    
+    clockb=pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white)
+    clockRectb=clockb.get_rect()
+    clockRectb.center=(250,175)
+    display_surface.blit(clockb, clockRectb)
+    
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, white, blue), (0, 380))
+    
     display_surface.blit(header, textRect)
+    
     dowb = pygame.image.load(file_location+"/Jimbot/images/downloadbutton.png").convert()
     dowb= pygame.transform.scale(dowb, (30, 30))
-    display_surface.blit(dowb, (770, 370))
+    display_surface.blit(dowb, (470, 370))
+    
     imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
     img= pygame.transform.scale(imp, (75, 75))
-    display_surface.blit(img, (265, 330))
+    display_surface.blit(img, (gameypos, 325))
+    
+    github = pygame.image.load(file_location+"/Jimbot/images/github.png").convert_alpha()
+    github= pygame.transform.scale(github, (50, 50))
+    pygame.draw.circle(display_surface, white, (475, 25),(23))
+    display_surface.blit(github, (450, 0))
+    
     pygame.display.update()
 def minimize():
     global header
@@ -911,19 +977,19 @@ def print(bpg):
     else:
         pass
 #Easter egg
-ax1=random.choice(range(0,800))
+ax1=random.choice(range(0,500))
 ay1=0
 
-ax2=random.choice(range(0,800))
+ax2=random.choice(range(0,500))
 ay2=random.choice(range(-100,0))
 
-ax3=random.choice(range(0,800))
+ax3=random.choice(range(0,500))
 ay3=random.choice(range(-200,-100))
 
-ax4=random.choice(range(0,800))
+ax4=random.choice(range(0,500))
 ay4=random.choice(range(-300,-200))
 
-ax5=random.choice(range(0,800))
+ax5=random.choice(range(0,500))
 ay5=random.choice(range(-500,-400))
 
 gamescore=0
@@ -966,11 +1032,13 @@ user_text=''
 resthre=0
 spekretno=0
 brkbt=False
-gameypos=265
+gameypos=212.5
 refresh()
 f10k=False
 # No longer defining things
 while True:
+    # Set up UI
+    refresh()
     # Tell when/what key is pressed
     keyi=pygame.key.get_pressed()
     keypressed=False
@@ -1006,31 +1074,23 @@ while True:
         backgn=file_location+"/Jimbot/images/backgroundm.jpg"
     else:
         backgn=file_location+"/Jimbot/images/background.jpg"
-    # Set up Task Manager button
-    x, y =pygame.mouse.get_pos()
-    if x<=45 and y>=200 and y<=230:
-        TM_var="Task Manager"
-        refresh()
-    else:
-        TM_var="TM"
-        refresh()
     # Set up buttons and inputs
     brk =0
     for event in pygame.event.get():
         # Easter egg
-        ax1=random.choice(range(0,800))
+        ax1=random.choice(range(0,500))
         ay1=0
 
-        ax2=random.choice(range(0,800))
+        ax2=random.choice(range(0,500))
         ay2=random.choice(range(-100,0))
 
-        ax3=random.choice(range(0,800))
+        ax3=random.choice(range(0,500))
         ay3=random.choice(range(-200,-100))
 
-        ax4=random.choice(range(0,800))
+        ax4=random.choice(range(0,500))
         ay4=random.choice(range(-300,-200))
 
-        ax5=random.choice(range(0,800))
+        ax5=random.choice(range(0,500))
         ay5=random.choice(range(-500,-400))
         gamescore=0
         if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
@@ -1098,6 +1158,7 @@ while True:
             if size == 1:
                 print('Game over. Score: '+str(gamescore))
                 time.sleep(3)
+                gameypos=212.5
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
@@ -1190,9 +1251,9 @@ while True:
             if brkbt==True or event.type == pygame.KEYDOWN or keypressed==True:
                 brkbt=False
                 break
-            elif f10k==False and x >=700 and y <= 35 and not spekret == 1:
+            elif f10k==False and x>=450 and y>=0 and x<=500 and y<=50 and not spekret == 1:
                 os.system('xdg-open https://github.com/Mrpi314tech/Jimbot &')
-            elif f10k==False and x >=400 and x<= 515 and y >= 40 and y <= 100 and not spekret == 1:
+            elif f10k==False and x>=100 and y>=35 and x<=220 and y<=110 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal python3 '+file_location+'/Jimbot/Python/Jimbotedit.py &')
                 try:
                     import new_words as aword
@@ -1204,29 +1265,29 @@ while True:
                     import Python.new_com as acom
                 nwcoml=acom.word
                 nrunl=acom.com
-            elif f10k==False and x >=590 and x<= 685 and y >= 40 and y <= 90 and not spekret == 1:
+            elif f10k==False and x>=0 and y>=0 and x<=40 and y<=25 and not spekret == 1:
                 os.system("xdg-open "+file_location+"/Jimbot/images/HowTo.jpg &")
-            elif f10k==False and x >=400 and x<= 570 and y >= 150 and y <= 200 and not spekret == 1:
+            elif f10k==False and x>=100 and y>=195 and x<=220 and y<=270 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal "cat ~/Jimbot/Python/skills/history.py && sleep 300" &')
-            elif f10k==False and x<=45 and y>=200 and y<=230:
-                os.system('~/Jimbot/Bash/Jimbotterminal htop &')
-            elif f10k==False and x>=400 and y>=250 and y<=280 and x<=535:
+            #elif f10k==False and x<=45 and y>=200 and y<=230:
+                #os.system('~/Jimbot/Bash/Jimbotterminal htop &')
+            elif f10k==False and x>=290 and y>=195 and x<=410 and y<=270:
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot/Bash/schedule.sh &')
-            elif f10k==False and x<75 and y>=80 and y<=110:
+            elif f10k==False and x>=290 and y>=35 and x<=410 and y<=110:
                 os.system('python3 ~/Jimbot/Python/stats.py &')
-            elif f10k==False and x>=600 and x<=685 and y<=15:
+            elif f10k==False and x>=0 and y>=380 and x<=90 and y<=400:
                 size=2
                 switchsize=1
             elif f10k==False and x>=265 and y>=135 and size ==2:
                 size=1
                 switchsize=1
-            elif f10k==False and x>=770 and y>=370:
+            elif f10k==False and x>=470 and y>=370 and x<=500 and y<=400:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh')
                 prints('exiting...')
                 os.system('sudo pkill -f Jimbot')
                 exit()
-            if f10k == True or x >=265 and x<= 340 and y >= 340 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
+            if f10k == True or x>=210 and y>=330 and x<=285 and y<=400 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
                 # Reset variables
                 spekret=0
