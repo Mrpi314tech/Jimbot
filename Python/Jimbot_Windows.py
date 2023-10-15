@@ -132,7 +132,7 @@ display_surface.blit(img, (212.5, 325))
     
 github = pygame.image.load(file_location+"/Jimbot/images/github.png").convert_alpha()
 github= pygame.transform.scale(github, (50, 50))
-pygame.draw.circle(display_surface, white, (475, 25),(23))
+pygame.draw.circle(display_surface, blue, (475, 27),(23))
 display_surface.blit(github, (450, 0))
     
 pygame.display.flip()
@@ -190,9 +190,6 @@ def speak(say):
     engine.runAndWait()
 # Set up speech recognition
 r=sr.Recognizer()
-# Take picture
-print('Picture stored at Jimbot/images')
-os.system("fswebcam -r 1280x720 --no-banner ~/Jimbot/images/secure.jpg")
 # Fart
 def stinky():
     os.system('xdg-open ~/Jimbot/sounds/fart.mp3')
@@ -437,7 +434,7 @@ def question(qstn):
         moodometer=[1,2,3,4,4,5,5]
     elif 'picture' in qstn:
         os.system("fswebcam -r 1280x720 --no-banner ~/Pictures/AI.jpg")
-        screen('look in shell\nfor result')
+        screen('Picture taken')
         moodometer=[1,2,3,4,5]
     elif 'Google search' in qstn or 'google search' in qstn:
         r=sr.Recognizer()
@@ -932,7 +929,7 @@ def normal():
     
     github = pygame.image.load(file_location+"/Jimbot/images/github.png").convert_alpha()
     github= pygame.transform.scale(github, (50, 50))
-    pygame.draw.circle(display_surface, white, (475, 25),(23))
+    pygame.draw.circle(display_surface, blue, (475, 27),(23))
     display_surface.blit(github, (450, 0))
     
     pygame.display.update()
@@ -1104,7 +1101,7 @@ while True:
                             game()
                             spekretno=0
                             keypressed=True
-                        if gameypos <= 764 and event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                        if gameypos <= 450 and event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
                             gameypos+=50
                             game()
                             spekretno=0
@@ -1116,7 +1113,7 @@ while True:
                 time.sleep(0.05)
                 ay1+=20
                 if ay1 >= 400:
-                    ax1=random.choice(range(0,800))
+                    ax1=random.choice(range(0,500))
                     ay1=0
                     gamescore+=1
                 if ay1 >= 325 and ax1 >= diez1 and ax1 <= diez2:
@@ -1124,7 +1121,7 @@ while True:
                 
                 ay2+=20
                 if ay2 >= 400:
-                    ax2=random.choice(range(0,800))
+                    ax2=random.choice(range(0,500))
                     ay2=0
                     gamescore+=1
                 if ay2 >= 325 and ax2 >= diez1 and ax2 <= diez2:
@@ -1132,7 +1129,7 @@ while True:
                     
                 ay3+=20
                 if ay3 >= 400:
-                    ax3=random.choice(range(0,800))
+                    ax3=random.choice(range(0,500))
                     ay3=0
                     gamescore+=1
                 if ay3 >= 325 and ax3 >= diez1 and ax3 <= diez2:
@@ -1140,7 +1137,7 @@ while True:
                     
                 ay4+=20
                 if ay4 >= 400:
-                    ax4=random.choice(range(0,800))
+                    ax4=random.choice(range(0,500))
                     ay4=0
                     gamescore+=1
                 if ay4 >= 325 and ax4 >= diez1 and ax4 <= diez2:
@@ -1148,7 +1145,7 @@ while True:
                     
                 ay5+=20
                 if ay5 >= 400:
-                    ax5=random.choice(range(0,800))
+                    ax5=random.choice(range(0,500))
                     ay5=0
                     gamescore+=1
                 if ay5 >= 325 and ax5 >= diez1 and ax5 <= diez2:
