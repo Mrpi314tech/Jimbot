@@ -216,28 +216,10 @@ def google_search(url):
         text_elements = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'div'])
         
         page_text = ' '.join(element.get_text() for element in text_elements)
-        page_text=page_text.replace(' Sun', ' Sunday')
-        page_text=page_text.replace(' Mon', ' Monday')
-        page_text=page_text.replace(' Tue', ' Tuesday')
-        page_text=page_text.replace(' Wed', ' Wednesday')
-        page_text=page_text.replace(' Thu', ' Thursday')
-        page_text=page_text.replace(' Fri', ' Friday')
-        page_text=page_text.replace(' Sat', ' Saturday')
-        
-        page_text=page_text.replace(' Jan', ' January')
-        page_text=page_text.replace(' Feb', ' February')
-        page_text=page_text.replace(' Mar', ' March')
-        page_text=page_text.replace(' Apr', ' April')
-        page_text=page_text.replace(' Jun', ' June')
-        page_text=page_text.replace(' Jul', ' July')
-        page_text=page_text.replace(' Aug', ' August')
-        page_text=page_text.replace(' Sep', ' September')
-        page_text=page_text.replace(' Oct', ' October')
-        page_text=page_text.replace(' Nov', ' November')
-        page_text=page_text.replace(' Dec', ' December')
         page_text=page_text.replace('°', ' degrees ')
         page_text=page_text.replace('\u202f', ' ')
         page_text=page_text.replace('\u203a', ' ')
+        page_text=page_text.replace(':00,' " o'clock")
         #page_text=page_text.replace('\u', ' ')
         for i in range(0,10):
             page_text = re.sub(pattern, r'\1 \2', page_text)
@@ -269,13 +251,28 @@ def google_search(url):
         page_text=page_text.replace(' F ', ' fahrenheit ')
         page_text=page_text.replace(' Q ', ' Quarter ')
         page_text=page_text.replace(' Final,', '')
+        page_text=page_text.replace(' Sun', ' Sunday')
+        page_text=page_text.replace(' Mon', ' Monday')
+        page_text=page_text.replace(' Tue', ' Tuesday')
+        page_text=page_text.replace(' Wed', ' Wednesday')
+        page_text=page_text.replace(' Thu', ' Thursday')
+        page_text=page_text.replace(' Fri', ' Friday')
+        page_text=page_text.replace(' Sat', ' Saturday')
+        
+        page_text=page_text.replace(' Jan', ' January')
+        page_text=page_text.replace(' Feb', ' February')
+        page_text=page_text.replace(' Mar', ' March')
+        page_text=page_text.replace(' Apr', ' April')
+        page_text=page_text.replace(' Jun', ' June')
+        page_text=page_text.replace(' Jul', ' July')
+        page_text=page_text.replace(' Aug', ' August')
+        page_text=page_text.replace(' Sep', ' September')
+        page_text=page_text.replace(' Oct', ' October')
+        page_text=page_text.replace(' Nov', ' November')
+        page_text=page_text.replace(' Dec', ' December')
         page_text = re.split(r'\.(?=[A-Z])', page_text)[0]
         if 'eather' in url:
             page_text = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text)[0]
-        try:
-            #page_text=page_text.split("/")[1]
-        except IndexError:
-            pass
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
             speak('opening in browser')
             page_text=' '
@@ -540,7 +537,10 @@ def question(qstn):
         except:
             saidgtxt=" "
         #os.system('xdg-open https://www.google.com/search?q='+saidgtxt+' &')
-        screen(google_search(saidgtxt))
+        try:
+            screen(google_search(saidgtxt))
+        except ConnectionError:
+            screen('No internet connection!')
         moodometer=[1,2,3,4,5,6]
     elif 'I will' in qstn or 'definately' in qstn:
         screen('that is good')
@@ -688,23 +688,11 @@ def question(qstn):
         screen('yep')
         moodometer=[1,2,3,4,5]
     elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
-        screen('Would you like me to search that?')
-        r=sr.Recognizer()
+        screen('Searching...')
         try:
-            with sr.Microphone() as source:
-                r.adjust_for_ambient_noise(source)
-                print('Speak...')
-                audio=r.listen(source)
-                print('')
-                saidgtxt=r.recognize_google(audio)
-                saidgtxt=saidgtxt.replace(' ', '+')
-        except:
-            saidgtxt="No"
-        if 'yes' in saidgtxt or 'yeah' in saidgtxt or 'sure' in saidgtxt:
-            #qstn=qstn.replace(' ', '+')
-            #qstn=qstn.replace("'", '+')
-            #os.system('xdg-open https://www.google.com/search?q='+qstn+' &')
             screen(google_search(qstn))
+        except ConnectionError:
+            screen('No internet connection!')
         moodometer=[1,2,3,4,6]
     elif qstn == 'no' or 'no ' in qstn:
         screen('ok')
