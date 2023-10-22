@@ -194,7 +194,11 @@ r=sr.Recognizer()
 def stinky():
     os.system('xdg-open ~/Jimbot/sounds/fart.mp3')
 # Google Search
-from bs4 import BeautifulSoup
+try:
+    from bs4 import BeautifulSoup
+except ModuleNotFoundError:
+    os.system('pip install beautifulsoup4')
+    os.system('sudo pkill -f Jimbot')
 import re
 pattern = r'([a-zA-Z])(\d)'
 pattern2 = r'([a-z])([A-Z])'
