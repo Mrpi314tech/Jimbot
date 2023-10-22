@@ -273,7 +273,7 @@ def google_search(url):
         if 'eather' in url:
             page_text = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text)[0]
         try:
-            page_text=page_text.split("/")[1]
+            #page_text=page_text.split("/")[1]
         except IndexError:
             pass
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
