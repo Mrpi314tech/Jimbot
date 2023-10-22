@@ -219,7 +219,7 @@ def google_search(url):
         page_text=page_text.replace('°', ' degrees ')
         page_text=page_text.replace('\u202f', ' ')
         page_text=page_text.replace('\u203a', ' ')
-        page_text=page_text.replace(':00,' " o'clock")
+        page_text=page_text.replace(':00', " o'clock")
         #page_text=page_text.replace('\u', ' ')
         for i in range(0,10):
             page_text = re.sub(pattern, r'\1 \2', page_text)
