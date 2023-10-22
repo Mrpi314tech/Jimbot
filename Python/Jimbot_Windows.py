@@ -528,7 +528,8 @@ def question(qstn):
         try:
             with sr.Microphone() as source:
                 r.adjust_for_ambient_noise(source)
-                screen('search...')
+                print('search...')
+                speak('Search')
                 audio=r.listen(source)
                 saidgtxt=r.recognize_google(audio)
                 #saidgtxt=saidgtxt.replace(' ', '+')
