@@ -6,8 +6,6 @@ mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Python/skills ~
 mv ~/Jimbot/Hotword/Jimbot.ppn ~
 rm -r ~/Jimbot
-echo "downloading new packages"
-pip install beautifulsoup4
 git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
 rm ~/Jimbot/Welcome/info.py
