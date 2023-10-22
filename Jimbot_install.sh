@@ -42,6 +42,7 @@ sudo apt-get install alsa-utils
 pip install pygame
 pip install psutil
 pip install smbus
+pip install beautifulsoup4
 pip install pyttsx3
 sudo pip install keyboard
 sudo apt-get install wmctrl
