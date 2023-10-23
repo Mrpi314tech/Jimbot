@@ -270,13 +270,14 @@ def google_search(url):
         page_text=page_text.replace(' Oct', ' October')
         page_text=page_text.replace(' Nov', ' November')
         page_text=page_text.replace(' Dec', ' December')
+        page_text=page_text.replace(' / ', ', ')
         page_text = re.split(r'\.(?=[A-Z])', page_text)[0]
         if 'eather' in url:
             page_text = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text)[0]
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
             speak('opening in browser')
             page_text=' '
-            os.system('xdg-open '+url+' &')
+            os.system('xdg-open "'+url+'" &')
         return page_text
     else:
         return f"Error: Unable to retrieve content. Status code {response.status_code}"
