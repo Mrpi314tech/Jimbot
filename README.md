@@ -19,10 +19,10 @@ Jimbot is a virtual assistant for your computer. It can do many things, like ope
 *It should work on all linux based operating systems
 <br>
 <h2>To install:</h2>
-  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.2.1/Install.sh'>this file</a> and execute it.
+  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.2.2/Install.sh'>this file</a> and execute it.
   <br>
   Or run this command:
-  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.2.1/Install.sh
+  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.2.2/Install.sh
 chmod +x Install.sh
 ./Install.sh</code></pre>
 <h3>To Update</h3>
