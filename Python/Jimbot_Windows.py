@@ -645,10 +645,7 @@ def question(qstn):
     elif qstn =='ok':
         screen('ok')
         moodometer=[1,2,3,4,5]
-    elif 'foot' in qstn:
-        screen('you mean the smelly things on the ends of human legs?')
-        moodometer=[1,2,3,4,4,4]
-    elif 'time' in qstn:
+    elif 'what time is it' in qstn or 'tell me the time' in qstn:
         ntime()
         moodometer=[1,2,3,4,5]
     elif 'cold' in qstn:
