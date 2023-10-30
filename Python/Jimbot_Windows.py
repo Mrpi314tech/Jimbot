@@ -1328,9 +1328,9 @@ while True:
             if brkbt==True or event.type == pygame.KEYDOWN or keypressed==True:
                 brkbt=False
                 break
-            elif f10k==False and x>=450 and y>=0 and x<=500 and y<=50 and not spekret == 1:
+            elif size == 1 and f10k==False and x>=450 and y>=0 and x<=500 and y<=50 and not spekret == 1:
                 os.system('xdg-open https://github.com/Mrpi314tech/Jimbot &')
-            elif f10k==False and x>=100 and y>=35 and x<=220 and y<=110 and not spekret == 1:
+            elif size == 1 and f10k==False and x>=100 and y>=35 and x<=220 and y<=110 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal python3 '+file_location+'/Jimbot/Python/Jimbotedit.py &')
                 try:
                     import new_words as aword
