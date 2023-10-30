@@ -1342,29 +1342,29 @@ while True:
                     import Python.new_com as acom
                 nwcoml=acom.word
                 nrunl=acom.com
-            elif f10k==False and x>=0 and y>=0 and x<=40 and y<=25 and not spekret == 1:
+            elif size == 1 and f10k==False and x>=0 and y>=0 and x<=40 and y<=25 and not spekret == 1:
                 os.system("xdg-open "+file_location+"/Jimbot/images/HowTo.jpg &")
-            elif f10k==False and x>=100 and y>=195 and x<=220 and y<=270 and not spekret == 1:
+            elif size == 1 and f10k==False and x>=100 and y>=195 and x<=220 and y<=270 and not spekret == 1:
                 os.system('~/Jimbot/Bash/Jimbotterminal "cat ~/Jimbot/Python/skills/history.py && sleep 300" &')
             #elif f10k==False and x<=45 and y>=200 and y<=230:
                 #os.system('~/Jimbot/Bash/Jimbotterminal htop &')
-            elif f10k==False and x>=290 and y>=195 and x<=410 and y<=270:
+            elif size == 1 and f10k==False and x>=290 and y>=195 and x<=410 and y<=270:
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot/Bash/schedule.sh &')
-            elif f10k==False and x>=290 and y>=35 and x<=410 and y<=110:
+            elif size == 1 and f10k==False and x>=290 and y>=35 and x<=410 and y<=110:
                 os.system('python3 ~/Jimbot/Python/stats.py &')
-            elif f10k==False and x>=0 and y>=380 and x<=90 and y<=400:
+            elif size == 1 and f10k==False and x>=0 and y>=380 and x<=90 and y<=400:
                 size=2
                 switchsize=1
-            elif f10k==False and x>=265 and y>=135 and size ==2:
+            elif size == 1 and f10k==False and x>=265 and y>=135 and size ==2:
                 size=1
                 switchsize=1
-            elif f10k==False and x>=470 and y>=370 and x<=500 and y<=400:
+            elif size ==1 and f10k==False and x>=470 and y>=370 and x<=500 and y<=400:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh')
                 prints('exiting...')
                 os.system('sudo pkill -f Jimbot')
                 exit()
-            if f10k == True or x>=210 and y>=330 and x<=285 and y<=400 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
+            if size == 1 and f10k == True or x>=210 and y>=330 and x<=285 and y<=400 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
                 # Reset variables
                 spekret=0
