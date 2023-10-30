@@ -270,14 +270,13 @@ def google_search(url):
         page_text=page_text.replace(' Oct', ' October')
         page_text=page_text.replace(' Nov', ' November')
         page_text=page_text.replace(' Dec', ' December')
-        page_text=page_text.replace(' / ', ', ')
         page_text = re.split(r'\.(?=[A-Z])', page_text)[0]
         if 'eather' in url:
             page_text = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text)[0]
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
             speak('opening in browser')
             page_text=' '
-            os.system('xdg-open "'+url+'" &')
+            os.system('xdg-open '+url+' &')
         return page_text
     else:
         return f"Error: Unable to retrieve content. Status code {response.status_code}"
@@ -577,7 +576,7 @@ def question(qstn):
     elif 'only' in qstn and 'friend' in qstn or 'best friend' in qstn:
         screen('thanks but thats\nnot very healthy')
         moodometer=[1,2,3,4,4,5]
-    elif 'i wish' in qstn or 'i hope' in qstn:
+    elif 'I wish' in qstn or 'I hope' in qstn:
         screen('me too')
         moodometer=[1,2,3,4,4,4,5]
     elif 'color' in qstn and 'sky' in qstn and 'what' in qstn:
@@ -604,7 +603,7 @@ def question(qstn):
     elif 'rock' in qstn and 'paper' in qstn:
         rockpaper()
         moodometer=[1,2,3,4,4,5]
-    elif qstn == 'thanks':
+    elif 'thanks' in qstn:
         screen('your welcome')
         moodometer=[1,2,3,4,4,4,4,4,5]
     elif 'you' in qstn and 'food' in qstn:
@@ -633,19 +632,22 @@ def question(qstn):
     elif qstn == 'nice':
         screen('Thank you')
         moodometer=[1,2,3,4]
-    elif 'i say' in qstn and 'what' in qstn:
+    elif 'I say' in qstn:
         moodometer=[1,2,3,4,5]
         screen('just say anything')
     elif qstn == 'why':
         screen('because')
         moodometer=[1,5,5,5]
-    elif 'i' in qstn and'scared' in qstn or 'frightened' in qstn:
-        print("dont worry, you'll probably be fine")
+    elif 'scared' in qstn or 'frightened' in qstn:
+        print('dont worry, youll probably be fine')
         moodometer=[1,2,3,4,4,4,5]
-    elif qstn =='ok':
+    elif 'ok' in qstn:
         screen('ok')
         moodometer=[1,2,3,4,5]
-    elif 'what time is it' in qstn or 'tell me the time' in qstn:
+    elif 'foot' in qstn:
+        screen('you mean the smelly things on the ends of human legs?')
+        moodometer=[1,2,3,4,4,4]
+    elif 'time' in qstn:
         ntime()
         moodometer=[1,2,3,4,5]
     elif 'cold' in qstn:
@@ -658,20 +660,12 @@ def question(qstn):
         screen('Amaranth')
         moodometer=[1,2,3,4,5]
     elif 'movie' in qstn or 'I watch' in qstn:
-        screen('anything with Wall-e or the Jetsons')
+        print('anything with Wall-e or the Jetsons')
+        screen('look in shell\nfor result')
         moodometer=[1,2,3,4,5]
-    elif 'what' in qstn and 'your' in qstn:
-        screen("I'm not sure I have one")
-        moodometer=[1,2,3,4]
-    elif 'are you' in qstn or 'your name' in qstn:
-        screen('I am '+name)
-        moodometer=[1,2,3,4,4,5]
-    elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
-        screen('Searching...')
-        try:
-            screen(google_search(qstn))
-        except ConnectionError:
-            screen('No internet connection!')
+    elif 'feet' in qstn:
+        screen('you mean the smelly things on the ends of human legs?')
+        moodometer=[1,2,3,4,4,4,5]
     elif 'maybe' in qstn:
         screen('maybe...')
         moodometer=[1,3,4,5]
@@ -681,8 +675,11 @@ def question(qstn):
     elif "correct" in qstn:
         screen("I know")
         moodometer=[1,2,3,4]
+    elif 'what' in qstn and 'your' in qstn:
+        screen("I'm not sure I have one")
+        moodometer=[1,2,3,4]
     elif 'want' in qstn:
-        screen('you want it,but do you need it?')
+        screen('you want it,\nbut do you need it?')
         moodometer=[1,2,3,4,5,5]
     elif 'Bible' in qstn or 'verse' in qstn:
         bible()
@@ -690,16 +687,26 @@ def question(qstn):
     elif 'oh' in qstn:
         screen('yep')
         moodometer=[1,2,3,4,5]
+    elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
+        screen('Searching...')
+        try:
+            screen(google_search(qstn))
+        except ConnectionError:
+            screen('No internet connection!')
+        moodometer=[1,2,3,4,6]
     elif qstn == 'no' or 'no ' in qstn:
         screen('ok')
         moodometer=[1,2,3,4]
+    elif 'are you' in qstn or 'your name' in qstn:
+        screen('I am '+name)
+        moodometer=[1,2,3,4,4,5]
     elif 'i like' in qstn:
         screen('oh')
         moodometer=[1,2,3,4]
     elif 'sorry' in qstn:
         screen('for what?')
         moodometer=[1,2,3,4]
-    elif 'you' in qstn and 'cool' in qstn and 're' in qstn:
+    elif 'you' in qstn and 'cool' in qstn:
         screen('Thanks!')
         moodometer=[1,2,3,4]
     elif 'yes' in qstn:
