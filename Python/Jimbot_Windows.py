@@ -1241,12 +1241,12 @@ while True:
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             break
         # Set up input box
-        elif size == 1 and event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN:
             if event.type == pygame.KEYDOWN:
                 if f10k==False and event.key == pygame.K_F10:
                     f10k=True
                     brk=1
-                elif f10k==False and event.key == pygame.K_BACKSPACE:
+                elif size == 1 and f10k==False and event.key == pygame.K_BACKSPACE:
                     user_text = user_text[:-1]
                     if user_text == '':
                         brk =1
@@ -1256,14 +1256,14 @@ while True:
                     spekretno=0
                     keypressed=True
                     brk=1
-                elif f10k==False:
+                elif size == 1 and f10k==False:
                     user_text += event.unicode
                     keypressed=True
                 refresh()
                 display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                 pygame.display.update()
             while True:
-                if spekret == 1 or brk == 1:
+                if size == 2 spekret == 1 or brk == 1:
                     break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and size == 1:
