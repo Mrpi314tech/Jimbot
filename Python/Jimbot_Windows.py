@@ -1355,7 +1355,7 @@ while True:
             elif size == 1 and f10k==False and x>=0 and y>=380 and x<=90 and y<=400:
                 size=2
                 switchsize=1
-            elif size == 1 and f10k==False and x>=265 and y>=135 and size ==2:
+            elif size == 2 and f10k==False and x>=265 and y>=135 and size ==2:
                 size=1
                 switchsize=1
             elif size ==1 and f10k==False and x>=470 and y>=370 and x<=500 and y<=400:
