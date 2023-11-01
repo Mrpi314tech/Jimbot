@@ -1263,7 +1263,7 @@ while True:
                 display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                 pygame.display.update()
             while True:
-                if size == 2 spekret == 1 or brk == 1:
+                if size == 2 and spekret == 1 or brk == 1:
                     break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and size == 1:
