@@ -1241,7 +1241,7 @@ while True:
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             break
         # Set up input box
-        elif event.type == pygame.KEYDOWN:
+        elif size == 1 and event.type == pygame.KEYDOWN:
             if event.type == pygame.KEYDOWN:
                 if f10k==False and event.key == pygame.K_F10:
                     f10k=True
