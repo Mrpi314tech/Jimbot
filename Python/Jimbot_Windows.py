@@ -1256,6 +1256,8 @@ while True:
                 elif size == 1 and f10k==False:
                     user_text += event.unicode
                     keypressed=True
+                else:
+                    brk=1
                 refresh()
                 display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                 pygame.display.update()
