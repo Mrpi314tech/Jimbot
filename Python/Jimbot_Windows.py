@@ -653,9 +653,6 @@ def question(qstn):
     elif 'cold' in qstn:
         screen('thats not good')
         moodometer=[1,2,3,4,4]
-    elif 'red' in qstn or 'green' in qstn or 'blue' in qstn or 'yellow' in qstn or 'orange' in qstn or 'purple' in qstn or 'pink' in qstn:
-        screen('My favorite color is Amaranth')
-        moodometer=[1,2,3,4]
     elif 'favorite color' in qstn and 'your' in qstn and not 'me' in qstn:
         screen('Amaranth')
         moodometer=[1,2,3,4,5]
