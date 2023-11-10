@@ -644,9 +644,6 @@ def question(qstn):
     elif 'ok' in qstn:
         screen('ok')
         moodometer=[1,2,3,4,5]
-    elif 'foot' in qstn:
-        screen('you mean the smelly things on the ends of human legs?')
-        moodometer=[1,2,3,4,4,4]
     elif 'time' in qstn:
         ntime()
         moodometer=[1,2,3,4,5]
@@ -660,9 +657,6 @@ def question(qstn):
         print('anything with Wall-e or the Jetsons')
         screen('look in shell\nfor result')
         moodometer=[1,2,3,4,5]
-    elif 'feet' in qstn:
-        screen('you mean the smelly things on the ends of human legs?')
-        moodometer=[1,2,3,4,4,4,5]
     elif 'maybe' in qstn:
         screen('maybe...')
         moodometer=[1,3,4,5]
