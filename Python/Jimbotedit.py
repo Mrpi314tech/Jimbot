@@ -30,7 +30,7 @@ elif 'wor' in qstn or 'Wor' in qstn:
 elif 'mus' in qstn or 'Mus' in qstn:
     kwordc=input("what is the keyword? (what do you want to say to play the music?)").lower()
     outputc=input("what is the file location for the music and the name?")
-    outc='xdg-open ('+outputc+') &'
+    outc='xdg-open '+outputc+' &'
     nwcoml.append(kwordc)
     nrunl.append(outc)
     file1 = open(file_location+"/Jimbot/Python/new_com.py", "w")
