@@ -6,12 +6,12 @@ import socket
 import psutil
 import random
 import threading
-ip_address = socket.gethostbyname(socket.gethostname())
+ip_address = os.popen('hostname -I').read().split(' ')[0]
 file_location=os.path.expanduser('~')
 pygame.init()
 white = (255, 255, 255)
 green = (0, 255, 0)
-blue = (0, 0, 128)
+blue = (56, 182, 255)
 X = 350
 Y = 120
 display_surface = pygame.display.set_mode((X, Y))
