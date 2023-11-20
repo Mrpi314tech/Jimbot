@@ -1,6 +1,6 @@
 <body style="background-color:lightblue;">
 <h1>Jimbot</h1>
-"Control your computer, with your voice."
+Control your computer with your voice.
 <br>
 <a href='https://jb.mrpi314.com'>jb.mrpi314.com</a>
 <h1></h1>
