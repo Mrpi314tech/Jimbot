@@ -34,6 +34,8 @@ nwcoml=acom.word
 nrunl=acom.com
 nwordl=aword.word
 ndefl=aword.defi
+# Intitializing
+os.system('notify-send -i ~/Jimbot/images/Jimbot.png "python3" "Initializing..."')
 # Set up clock
 hur=int(dt.now().strftime("%H"))
 minits=int(dt.now().strftime("%M"))
@@ -272,7 +274,9 @@ def google_search(url):
         page_text=page_text.replace(' Dec ', ' December ')
         page_text = re.split(r'\.(?=[A-Z])', page_text)[0]
         if 'eather' in url:
-            page_text = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text)[0]
+            page_text = page_text.split(',')
+            page_text[1] = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text[1])[0]
+            page_text=str(page_text[0])+str(page_text[1])
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
             speak('opening in browser')
             page_text=' '
@@ -1022,7 +1026,7 @@ def minimize():
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 15).render("Back", True, blue, white), (265, 135))
     pygame.display.update()
 # Finished the hard stuff
-print('Process completed')
+os.system('notify-send -i ~/Jimbot/images/Jimbot.png "python3" "Process completed."')
 # Redefine print to the gui
 def print(bpg):
     global size
