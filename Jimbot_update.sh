@@ -5,7 +5,7 @@ mv ~/Jimbot/Welcome/info.py ~
 mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Python/skills ~
 mv ~/Jimbot/Hotword/Jimbot.ppn ~
-mv ~/Jimbot/Jimbot-Dependencies ~
+mv ~/Jimbot/Dependencies ~/Jimbot-Dependencies
 rm -r ~/Jimbot
 git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
