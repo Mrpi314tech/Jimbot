@@ -47,7 +47,6 @@ pip install pyttsx3
 pip install keyboard
 sudo apt-get install wmctrl
 sudo apt install fswebcam
-sudo apt-get install htop
 sudo rm -r ~/Jimbot/.git
 echo "#!/bin/bash
 ~/Jimbot/Jimbot"' "$@"' | sudo tee /usr/local/bin/Jimbot -p /usr/local/bin
