@@ -137,6 +137,9 @@ display_surface.blit(github, (450, 0))
     
 pygame.display.flip()
 pygame.display.update()
+# Print in the terminal
+def prints(txttp):
+    sys.stdout.write(txttp+'\n')
 # Print to the GUI
 def print(bpg):
     global refresh
@@ -152,9 +155,6 @@ def print(bpg):
         pygame.display.update()
     else:
         pass
-# Print in the terminal
-def prints(txttp):
-    sys.stdout.write(txttp+'\n')
 # Test
 print('hello')
 # Set up simple phrases
@@ -198,7 +198,7 @@ try:
     from bs4 import BeautifulSoup
 except ModuleNotFoundError:
     os.system('pip install beautifulsoup4')
-    os.system('sudo pkill -f Jimbot')
+    exit()
 import re
 pattern = r'([a-zA-Z])(\d)'
 pattern2 = r'([a-z])([A-Z])'
@@ -363,7 +363,6 @@ def question(qstn):
         for proc in psutil.process_iter():
             if proc.name() == "display":
                 proc.kill()
-        os.system('sudo pkill -f Jimbot')
         exit()
     elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
         screen('I am doing great!')
@@ -477,7 +476,7 @@ def question(qstn):
     elif 'my' in qstn and 'food' in qstn and 'favorite' in qstn and 'is' in qstn and not 'why' in qstn and not 'what' in qstn and not 'how' in qstn:
         screen('oh, my favorite food is Jellied Moose nose')
         moodometer=[1,2,3,4]
-    elif 'yes' in qstn and data[0] == 2:
+    elif qstn == 'yes' and data[0] == 2:
         screen('Really?')
         moodometer=[1,3,4]
     elif 'wrong with you' in qstn:
@@ -1177,6 +1176,9 @@ while True:
                             game()
                             spekretno=0
                             keypressed=True
+                        if event.type == pygame.QUIT:
+                            sys.exit()
+                            exit()
                 diez1=gameypos
                 diez2=gameypos
                 diez1-=38
@@ -1250,6 +1252,9 @@ while True:
                 elif size == 1 and f10k==False:
                     user_text += event.unicode
                     keypressed=True
+                elif event.type == pygame.QUIT:
+                    sys.exit()
+                    exit()
                 else:
                     brk=1
                 refresh()
@@ -1271,6 +1276,9 @@ while True:
                             refresh()
                             display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                             pygame.display.update()
+                        elif event.type == pygame.QUIT:
+                            sys.exit()
+                            exit()
                         elif event.key == pygame.K_RETURN:
                             # Compute input
                             usertextls=user_text.split(' ')
@@ -1314,8 +1322,8 @@ while True:
                     break
         # Set up buttons
         elif event.type == pygame.QUIT:
-            os.system('sudo pkill -f Jimbot')
             sys.exit()
+            exit()
         elif f10k==True or keypressed == False and (event.type == pygame.MOUSEBUTTONDOWN or spekret ==1 or event.type == pygame.KEYDOWN):                
             x, y = pygame.mouse.get_pos()
             if brkbt==True or event.type == pygame.KEYDOWN or keypressed==True:
@@ -1355,10 +1363,10 @@ while True:
                 print('Updating Jimbot...')
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot_update.sh')
                 prints('exiting...')
-                os.system('sudo pkill -f Jimbot')
                 exit()
             if f10k == True or x>=210 and y>=330 and x<=285 and y<=400 or spekret==1 and spekretno ==0 or event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN and spekretno ==0:
                 # Press button/enter to speak
+
                 # Reset variables
                 spekret=0
                 spekretno=0
