@@ -1,4 +1,6 @@
 #!/bin/bash
+source Jimbot/Dependencies/bin/activate
 python3 ~/Jimbot/Python/keypressed.py &
-~/Jimbot/Hotword/main &
+python3 ~/Jimbot/Hotword/main.py &
 python3 ~/Jimbot/Jimbot.py
+deactivate

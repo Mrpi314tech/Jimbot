@@ -32,7 +32,7 @@ sudo apt-get install python3-tk python3-dev
 sudo apt install espeak
 sudo apt-get install portaudio19-dev
 sudo apt-get install xterm
-sudo pip install pyaudio
+pip install pyaudio
 pip install pynput
 pip install struct
 sudo apt-get install xdotool
@@ -44,7 +44,7 @@ pip install psutil
 pip install smbus
 pip install beautifulsoup4
 pip install pyttsx3
-sudo pip install keyboard
+pip install keyboard
 sudo apt-get install wmctrl
 sudo apt install fswebcam
 sudo apt-get install htop
