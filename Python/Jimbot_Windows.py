@@ -386,7 +386,7 @@ def question(qstn):
     elif crsponce[0] == 'what are you doing today?' and 'talking to you' in qstn:
         screen('other then that')
         moodometer=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    elif crsponce[0] == 'what are you doing today?' and 'doing' in qstn or 'going' in qstn and crsponce[0] == 'what are you doing today?' or 'am' in qstn and crsponce[0] == 'what are you doing today?' or 'will be' in qstn and crsponce[0] == 'what are you doing today?':
+    elif crsponce[0] == 'what are you doing today?' and ' doing' in qstn or 'going' in qstn and crsponce[0] == 'what are you doing today?' or ' am ' in qstn and crsponce[0] == 'what are you doing today?' or ' will be ' in qstn and crsponce[0] == 'what are you doing today?':
         screen('oh.')
         gtdt()
         moodometer=[1,2,3,4,5]
@@ -399,7 +399,7 @@ def question(qstn):
         else:
             screen('My favorite music is Jazz')
         moodometer=[1,2,3,4]
-    elif crsponce[0] == "Have you traveled anywhere recently? Where did you go?" and 'went' in qstn:
+    elif crsponce[0] == "Have you traveled anywhere recently? Where did you go?" and ' went ' in qstn:
         screen('I recentely went to Canada to eat Jellied Moose nose')
         moodometer=[1,2,3]
     elif crsponce[0] == "What's your favorite thing to do in your free time?" and 'my' in qstn and 'favorite' in qstn or crsponce[0] == "What's your favorite thing to do in your free time?" and 'i ' in qstn and 'like' in qstn:
@@ -436,7 +436,7 @@ def question(qstn):
                 os.system((oqstno.split('run ')[1]).replace(' ', '_')+' &')
                 os.system((oqstno.split('run ')[1])+' &')
             else:
-                os.system(oqstno.split('run ')[1])
+                os.system((oqstno.split('run ')[1])+' &')
         except IndexError:
             screen('To run a command, say "run" and then the command')
         moodometer=[1,2,3,4,6]
@@ -719,6 +719,10 @@ def question(qstn):
                 screen('I did not understand that. You can press edit to tell me what it means')
                 break
         moodometer=[1,2,3,4]
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            sys.exit()
+            exit()
     # Determine mood
     global mood
     if moodometer == [1,2,3,4,5] or moodometer==[1,2,3,4,5,6]:
@@ -1047,7 +1051,7 @@ def print(bpg):
         pygame.display.update()
     else:
         pass
-#Easter egg
+# Easter egg
 ax1=random.choice(range(0,500))
 ay1=0
 
@@ -1238,6 +1242,9 @@ while True:
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
             break
         # Set up input box
+        elif event.type == pygame.QUIT:
+            sys.exit()
+            exit()
         elif event.type == pygame.KEYDOWN:
             if event.type == pygame.KEYDOWN:
                 if f10k==False and event.key == pygame.K_F10:
@@ -1256,15 +1263,15 @@ while True:
                 elif size == 1 and f10k==False:
                     user_text += event.unicode
                     keypressed=True
-                elif event.type == pygame.QUIT:
-                    sys.exit()
-                    exit()
                 else:
                     brk=1
                 refresh()
                 display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                 pygame.display.update()
             while True:
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                    exit()
                 if size == 2 and spekret == 1 or brk == 1:
                     break
                 for event in pygame.event.get():
@@ -1280,9 +1287,6 @@ while True:
                             refresh()
                             display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(user_text+'              ', True, white), (50, 300))
                             pygame.display.update()
-                        elif event.type == pygame.QUIT:
-                            sys.exit()
-                            exit()
                         elif event.key == pygame.K_RETURN:
                             # Compute input
                             usertextls=user_text.split(' ')
@@ -1381,11 +1385,13 @@ while True:
                 with sr.Microphone() as source:
                     r.adjust_for_ambient_noise(source)
                     if st == 0:
-                        
                         st=1
                         past=['z','z','z','z']
                     print('Speak...')
                     audio=r.listen(source)
+                    if event.type == pygame.QUIT:
+                        sys.exit()
+                        exit()
                     refresh()
                     try:
                         saidtxt=r.recognize_google(audio)
