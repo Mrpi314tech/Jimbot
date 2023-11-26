@@ -18,6 +18,7 @@ import json
 import sys
 import asyncio
 import socket
+import threading
 # Find username and ip
 file_location=os.path.expanduser('~')
 ip_address = socket.gethostbyname(socket.gethostname())
@@ -187,9 +188,22 @@ notnoun="for and nor but or yet so a an the and do I he him her tell we they it 
 engine=pyttsx3.init()
 engine.setProperty('voice', 'english-us')
 voice=True
+VoiceVar=False
+def say_thread(say):
+    global VoiceVar
+    while VoiceVar:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+                exit()
 def speak(say):
+    global VoiceVar
+    VoiceVar=True
+    voice_thread = threading.Thread(target=say_thread, args=(say,))
+    voice_thread.start()
     engine.say(say)
     engine.runAndWait()
+    VoiceVar=False
 # Set up speech recognition
 r=sr.Recognizer()
 # Fart
@@ -199,6 +213,7 @@ def stinky():
 try:
     from bs4 import BeautifulSoup
 except ModuleNotFoundError:
+    screen('installing new libraries')
     os.system('pip install beautifulsoup4')
     exit()
 import re
