@@ -129,7 +129,7 @@ dowb = pygame.image.load(file_location+"/Jimbot/images/downloadbutton.png").conv
 dowb= pygame.transform.scale(dowb, (30, 30))
 display_surface.blit(dowb, (470, 370))
     
-imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
+imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert_alpha()
 img= pygame.transform.scale(imp, (75, 75))
 display_surface.blit(img, (212.5, 325))
     
@@ -1016,7 +1016,7 @@ def normal():
     dowb= pygame.transform.scale(dowb, (30, 30))
     display_surface.blit(dowb, (470, 370))
     
-    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
+    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert_alpha()
     img= pygame.transform.scale(imp, (75, 75))
     display_surface.blit(img, (gameypos, 325))
     
@@ -1037,9 +1037,6 @@ def minimize():
     textRect = header.get_rect()
     textRect.center = (60, 20)
     display_surface.blit(header, textRect)
-    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
-    img= pygame.transform.scale(imp, (75, 75))
-    display_surface.blit(img, (0, 330))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 32).render(currentTime, True, white), (150, 0))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white), (150, 30))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 15).render("Back", True, blue, white), (265, 135))
@@ -1090,7 +1087,7 @@ def game():
     display_surface.blit(header, textRect)
     imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
     img= pygame.transform.scale(imp, (75, 75))
-    display_surface.blit(img, (gameypos, 330))
+    display_surface.blit(img, (gameypos, 325))
     
     asteroid=pygame.image.load(file_location+"/Jimbot/images/asteroid.png").convert_alpha()
     rock1=pygame.transform.scale(asteroid, (75, 75))
