@@ -170,15 +170,15 @@ mood=1
 sys.path.append('../')
 try:
     from Welcome import info as info
+    pvp_passkey=info.pvp_passkey
 except:
     try:
         import Welcome.info as info
+        pvp_passkey=info.pvp_passkey
     except:
         os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Welcome/Survey.py')
-        try:
-            from Welcome import info as info
-        except:
-            import Welcome.info as info
+        sys.exit()
+        exit() 
 your_name = info.your_name
 name="Jimbot"
 # Simple grammar
