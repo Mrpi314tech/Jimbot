@@ -4,15 +4,22 @@ import time
 import struct
 import pyaudio
 import pvporcupine
+import sys
 porcupine = None
 pa = None
 audio_stream = None
-sys.path.append('../')
+
 try:
-    from Welcome import info as info
+    from Hotword import info as info
     pvp_passkey=info.pvp_passkey
 except:
-    import Welcome.info as info
+    try:
+        import info
+        pvp_passkey=info.pvp_passkey
+    except:
+        os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Hotword/Access_key.py')
+        sys.exit()
+        exit()
 pvp_passkey=info.pvp_passkey
 try:
     porcupine = pvporcupine.create(keyword_paths=["~/Jimbot/Hotword/Jimbot.ppn"], access_key=pvp_passkey)
