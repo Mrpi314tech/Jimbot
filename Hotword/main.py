@@ -7,9 +7,15 @@ import pvporcupine
 porcupine = None
 pa = None
 audio_stream = None
-
+sys.path.append('../')
 try:
-    porcupine = pvporcupine.create(keyword_paths=["~/Jimbot/Hotword/Jimbot.ppn"], access_key="oCSOG+CGD56VT1OF60VxMxi1CndRSG4K/6em7V63GQAQIeiIaYthCA==")
+    from Welcome import info as info
+    pvp_passkey=info.pvp_passkey
+except:
+    import Welcome.info as info
+pvp_passkey=info.pvp_passkey
+try:
+    porcupine = pvporcupine.create(keyword_paths=["~/Jimbot/Hotword/Jimbot.ppn"], access_key=pvp_passkey)
 
     pa = pyaudio.PyAudio()
 
