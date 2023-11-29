@@ -21,6 +21,8 @@ Jimbot is a virtual assistant for your computer. It can do many things, like ope
 <h2>To install:</h2>
   Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.1/Install.sh'>this file</a> and execute it.
   <br>
+  Get an <a href='https://picovoice.ai/'>Access Key</a> from picovoice.
+  <br>
   Or run this command:
   <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.1/Install.sh
 chmod +x Install.sh
