@@ -10,17 +10,17 @@ pa = None
 audio_stream = None
 
 try:
-    from Hotword import info as info
-    pvp_passkey=info.pvp_passkey
+    from Hotword import hinfo as hinfo
+    pvp_passkey=hinfo.pvp_passkey
 except:
     try:
-        import info
-        pvp_passkey=info.pvp_passkey
+        import hinfo
+        pvp_passkey=hinfo.pvp_passkey
     except:
         os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Hotword/Access_key.py')
         sys.exit()
         exit()
-pvp_passkey=info.pvp_passkey
+pvp_passkey=hinfo.pvp_passkey
 try:
     porcupine = pvporcupine.create(keyword_paths=["~/Jimbot/Hotword/Jimbot.ppn"], access_key=pvp_passkey)
 
