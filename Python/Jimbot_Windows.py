@@ -505,9 +505,6 @@ def question(qstn):
     elif 'you' in qstn and 'bad' in qstn or 'you' in qstn and 'stupid' in qstn or 'you' in qstn and 'weird' in qstn:
         screen("no, you are.")
         moodometer=[5,5,5,5,5,5,5]
-    elif 'created' in qstn and 'you' in qstn:
-        screen('God created\neverything')
-        moodometer=[1,2,3,4,4,4,4,4]
     elif 'am' in qstn and 'talking' in qstn or 'was' in qstn and 'talking' in qstn:
         screen('oh sorry')
         moodometer=[1,2,3,4]
@@ -569,16 +566,14 @@ def question(qstn):
         screen('It could\nhappen')
         moodometer=[1,2,3,4,5]
     elif 'hate you' in qstn:
+        screen('Feelings: hurt. Restarting system.')
         raise ValueError('You are a bad person so I kicked you out')
-    elif 'story' in qstn or 'book' in qstn:
-        screen("I don't know any")
-        moodometer=[1,2,3,4,4,4]
     elif 'i feel' in qstn:
         if 'sad' in qstn or 'bad' in qstn or 'angry' in qstn or 'depressed' in qstn or "sick" in qstn:
             screen('I hope you feel better soon')
             moodometer=[1,2,3,4,4,4,4,4,4,5]
         elif 'happy' in qstn or 'well' in qstn or 'fine' in qstn or 'good' in qstn or 'wonderful' in qstn:
-            screen('that is\nvery good')
+            screen('that is very good')
             moodometer=[1,2,3,4,4,4,4,4,4,5]
         else:
             screen('ok')
@@ -586,19 +581,16 @@ def question(qstn):
     elif 'never mind' in qstn or 'nevermind' in qstn:
         screen('ok')
         moodometer=[1,2,3,4]
-    elif 'born' in qstn or 'old' in qstn:
-        screen('I was born\n in 2021')
+    elif 'when' in qstn and 'born' in qstn or 'how' in qstn and 'old' in qstn:
+        screen('I was born in 2021')
         moodometer=[1,2,3,4,5]
     elif 'only' in qstn and 'friend' in qstn or 'best friend' in qstn:
-        screen('thanks but thats\nnot very healthy')
+        screen("thanks, but that's not very healthy")
         moodometer=[1,2,3,4,4,5]
     elif 'I wish' in qstn or 'I hope' in qstn:
         screen('me too')
         moodometer=[1,2,3,4,4,4,5]
-    elif 'color' in qstn and 'sky' in qstn and 'what' in qstn:
-        screen('Technically, its\nPurple')
-        moodometer=[1,2,3,4,4,5]
-    elif 'middle' in qstn and 'name' in qstn:
+    elif 'middle' in qstn and 'name' in qstn and 'you' in qstn:
         screen('3.141592653589793238462643383275')
         moodometer=[1,2,3,4,5]
     elif 'how are you' in qstn or 'how do you do' in qstn:
@@ -622,7 +614,7 @@ def question(qstn):
     elif 'thanks' in qstn:
         screen('your welcome')
         moodometer=[1,2,3,4,4,4,4,4,5]
-    elif 'you' in qstn and 'food' in qstn:
+    elif 'you' in qstn and 'food' in qstn and 'favorite' in qstn:
         screen('My favorite food is Jellied Moose Nose')
         moodometer=[1,2,3,4,5]
     elif 'it did' in qstn:
