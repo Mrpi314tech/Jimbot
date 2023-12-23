@@ -1075,7 +1075,7 @@ def game():
     backg= pygame.transform.scale(backg, (800, 400))
     display_surface.blit(backg, (0, 0))
     display_surface.blit(header, textRect)
-    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert()
+    imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert_alpha()
     img= pygame.transform.scale(imp, (75, 75))
     display_surface.blit(img, (gameypos, 325))
     
