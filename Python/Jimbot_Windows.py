@@ -941,6 +941,7 @@ def bible():
 # Define refresh function
 size=1
 switchsize=0
+talkyes=False
 def refresh():
     global size
     global switchsize
@@ -959,6 +960,7 @@ def refresh():
             display_surface = pygame.display.set_mode((X, Y))
             switchsize=0
 def normal():
+    global talkyes
     header = font.render('Jimbot', True, white)
     textRect = header.get_rect()
     textRect.center = (250, 20)
@@ -1006,9 +1008,17 @@ def normal():
     dowb= pygame.transform.scale(dowb, (30, 30))
     display_surface.blit(dowb, (470, 370))
     
+    #pygame.draw.rect(display_surface, blue, pygame.Rect(gameypos-7.5, 317.5,90, 90))
+    if talkyes == True:
+        talk = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert_alpha()
+        talkp= pygame.transform.scale(talk, (90, 90))
+        talkp.set_alpha(100)
+        display_surface.blit(talkp, (gameypos-7.5, 317.5))
+    
     imp = pygame.image.load(file_location+"/Jimbot/images/Jimbot.png").convert_alpha()
     img= pygame.transform.scale(imp, (75, 75))
     display_surface.blit(img, (gameypos, 325))
+    
     
     github = pygame.image.load(file_location+"/Jimbot/images/github.png").convert_alpha()
     github= pygame.transform.scale(github, (50, 50))
@@ -1380,6 +1390,8 @@ while True:
                 # Reset variables
                 spekret=0
                 spekretno=0
+                talkyes=True
+                refresh()
                 # Play sound
                 pygame.mixer.music.load(file_location+"/Jimbot/sounds/answer.mp3")
                 pygame.mixer.music.play()
@@ -1401,6 +1413,7 @@ while True:
                     except:
                         notned+=1
                         break
+                talkyes=False
                 # Set up history
                 jsaid.insert(0, saidtxt)
                 history = open(file_location+"/Jimbot/Python/skills/history.py", "w")
