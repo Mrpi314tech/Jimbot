@@ -291,9 +291,12 @@ def google_search(url):
             page_text[1] = re.split(r'(?<=[a-z])\s(?=[A-Z])', page_text[1])[0]
             page_text=str(page_text[0])+str(page_text[1])
         if '...' in page_text or 'www.' in page_text or '.com' in page_text or '.org' in page_text or '.gov' in page_text or '.edu' in page_text or '.io' in page_text:
-            speak('opening in browser')
-            page_text=' '
-            os.system('xdg-open '+url+' &')
+            if not size == 3:
+                speak('opening in browser')
+                page_text=' '
+                os.system('xdg-open '+url+' &')
+            else:
+                return ('Adequate answer not found.')
         return page_text
     else:
         return f"Error: Unable to retrieve content. Status code {response.status_code}"
@@ -376,11 +379,15 @@ def question(qstn):
         gtdt()
         moodometer=[1,2,3,4,5]
     elif qstn == 'exit' or 'leave' in qstn or "goodbye" in qstn:
-        screen("Goodbye")
-        for proc in psutil.process_iter():
-            if proc.name() == "display":
-                proc.kill()
-        exit()
+        if not size == 3:
+            screen("Goodbye")
+            for proc in psutil.process_iter():
+                if proc.name() == "display":
+                    proc.kill()
+            exit()
+        else:
+            screen("Jimbot can't be closed with your voice while in headphones mode.")
+        moodometer=[1,2,3,4]
     elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
         screen('I am doing great!')
         moodometer=[1,1,1,2,3,4]
@@ -959,6 +966,13 @@ def refresh():
             Y = 150
             display_surface = pygame.display.set_mode((X, Y))
             switchsize=0
+    elif size == 3:
+        headphones()
+        if switchsize == 1:
+            X = 300
+            Y = 150
+            display_surface = pygame.display.set_mode((X, Y))
+            switchsize=0
 def normal():
     global talkyes
     header = font.render('Jimbot', True, white)
@@ -1000,7 +1014,9 @@ def normal():
     clockRectb.center=(250,175)
     display_surface.blit(clockb, clockRectb)
     
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, white, blue), (0, 380))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Minimize", True, white, blue), (0, 360))
+    
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render("Headphones", True, white, blue), (0, 380))
     
     display_surface.blit(header, textRect)
     
@@ -1041,6 +1057,26 @@ def minimize():
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 20).render(tofdy, True, white), (150, 30))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 15).render("Back", True, blue, white), (265, 135))
     pygame.display.update()
+def headphones():
+    global header
+    global textRect
+    global font
+    backg = pygame.image.load(backgn).convert()
+    backg= pygame.transform.scale(backg, (300, 150))
+    display_surface.blit(backg, (0, 0))
+    header = font.render('Jimbot', True, white)
+    textRect = header.get_rect()
+    textRect.center = (150, 20)
+    display_surface.blit(header, textRect)
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 15).render("Back", True, blue, white), (265, 135))
+    
+    pygame.draw.circle(display_surface, blue, (150,87.5), 45)
+    
+    imp = pygame.image.load(file_location+"/Jimbot/images/headphones.png").convert_alpha()
+    img= pygame.transform.scale(imp, (75, 75))
+    display_surface.blit(img, (112.5, 50))
+    
+    pygame.display.update()
 # Finished the hard stuff
 os.system('notify-send -i ~/Jimbot/images/Jimbot.png "python3" "Process completed."')
 # Redefine print to the gui
@@ -1058,8 +1094,10 @@ def print(bpg):
         thi = bpg1.get_rect()
         if size == 1:
             display_surface.blit(bpg1, (20, 300))
-        else:
+        elif size == 2:
             display_surface.blit(bpg1, (0, 120))
+        else:
+            pass
         pygame.display.update()
     else:
         pass
@@ -1182,7 +1220,7 @@ while True:
         gamescore=0
         if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT or event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
             while True:
-                if size==2:
+                if size==2 or size==3:
                     break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
@@ -1284,7 +1322,7 @@ while True:
                 if event.type == pygame.QUIT:
                     sys.exit()
                     exit()
-                if size == 2 and spekret == 1 or brk == 1:
+                if (size == 2 or size == 3) and spekret == 1 or brk == 1:
                     break
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN and size == 1:
@@ -1373,10 +1411,13 @@ while True:
                 os.system('~/Jimbot/Bash/Jimbotterminal ~/Jimbot/Bash/schedule.sh &')
             elif size == 1 and f10k==False and x>=290 and y>=35 and x<=410 and y<=110:
                 os.system('python3 ~/Jimbot/Python/stats.py &')
-            elif size == 1 and f10k==False and x>=0 and y>=380 and x<=90 and y<=400:
+            elif size == 1 and f10k==False and x>=0 and y>=360 and x<=90 and y<=380:
                 size=2
                 switchsize=1
-            elif size == 2 and f10k==False and x>=265 and y>=135 and size ==2:
+            elif size == 1 and f10k==False and x>=0 and y>=380 and x<=110 and y<=400:
+                size=3
+                switchsize=1
+            elif (size == 2 or size==3) and f10k==False and x>=265 and y>=135:
                 size=1
                 switchsize=1
             elif size ==1 and f10k==False and x>=470 and y>=370 and x<=500 and y<=400:
