@@ -1285,8 +1285,12 @@ while True:
                 game()
             if size == 1:
                 print('Game over. Score: '+str(gamescore))
-                time.sleep(3)
-                gameypos=212.5
+                for i in range(0,3):
+                    for event in pygame.event.get():
+                        if event.type == pygame.KEYDOWN:
+                            pass
+                    gameypos=212.5
+                    time.sleep(1)
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
             break
         elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
