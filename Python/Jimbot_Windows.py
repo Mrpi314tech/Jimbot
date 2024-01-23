@@ -263,7 +263,8 @@ def google_search(url):
         page_text=page_text.split("People also ask")[0]
         page_text=page_text.split("Others want to know")[0]
         page_text=page_text.split("More questions")[0]
-        page_text=page_text.replace(' F ', ' fahrenheit ')
+        if 'degree' in page_text:
+            page_text=page_text.replace(' F ', ' fahrenheit ')
         page_text=page_text.replace(' Q ', ' Quarter ')
         page_text=page_text.replace(' Final,', '')
         page_text=page_text.replace(' Sun,', ' Sunday,')
