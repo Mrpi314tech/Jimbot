@@ -11,8 +11,6 @@ git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
 rm ~/Jimbot/Welcome/info.py
 rm ~/skills/install_skills.py
-mv ~/Jimbot/Python/skills/install_skills.py ~/skills
-rm -r ~/Jimbot/Python/skills
 mv ~/new_words.py ~/Jimbot/Python
 mv ~/info.py ~/Jimbot/Welcome
 mv ~/new_com.py ~/Jimbot/Python
