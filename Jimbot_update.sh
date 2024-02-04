@@ -3,7 +3,6 @@ location="$HOME"
 mv ~/Jimbot/Python/new_words.py ~
 mv ~/Jimbot/Welcome/info.py ~
 mv ~/Jimbot/Python/new_com.py ~
-mv ~/Jimbot/Python/skills ~
 mv ~/Jimbot/Hotword/Jimbot.ppn ~
 mv ~/Jimbot/Hotword/hinfo.py ~
 mv ~/Jimbot/Dependencies ~/Jimbot-Dependencies
@@ -14,7 +13,6 @@ rm ~/Jimbot/Welcome/info.py
 rm ~/skills/install_skills.py
 mv ~/Jimbot/Python/skills/install_skills.py ~/skills
 rm -r ~/Jimbot/Python/skills
-mv ~/skills ~/Jimbot/Python
 mv ~/new_words.py ~/Jimbot/Python
 mv ~/info.py ~/Jimbot/Welcome
 mv ~/new_com.py ~/Jimbot/Python
