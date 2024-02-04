@@ -439,8 +439,8 @@ def question(qstn):
         screen("no I didn't")
         moodometer=[1,2,3,4]
     elif 'timer' in qstn:
-        os.system('~/Jimbot/Bash/Jimbotterminal python3 /home/mrpi314/Jimbot/Python/skills/timer.py')
-        moodometer=[1,2,3,4]
+        os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Python/skills/timer.py &')
+        moodometer=[1,2,3]
     elif 'run' in qstn or 'open' in qstn:
         if 'open' in qstn:
             qstn=qstn.replace('open ', 'run ')

@@ -1,6 +1,8 @@
 import sys
 import os
 import time
+import pygame
+pygame.init()
 try:
     import history
 except ModuleNotFoundError:
@@ -36,7 +38,10 @@ while True:
                 time.sleep(1)
                 print(hlong)
                 if hlong == 0:
-                    os.system('vlc '+ringer)
+                    pygame.mixer.music.load(file_location+"/Jimbot/sounds/answer.mp3")
+                    for i in range(0,60):
+                        pygame.mixer.music.play()
+                        time.sleep(1)
                     brk=1
                     break
         elif 'minute' in qstn[strco]:
@@ -68,7 +73,10 @@ while True:
                 time.sleep(1)
                 print(hlong)
                 if hlong == 0:
-                    os.system('vlc '+ringer)
+                    pygame.mixer.music.load(file_location+"/Jimbot/sounds/answer.mp3")
+                    for i in range(0,60):
+                        pygame.mixer.music.play()
+                        time.sleep(1)
                     brk=1
                     break
         if brk == 1:
