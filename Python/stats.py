@@ -41,7 +41,7 @@ while True:
         cpu_usage=cpu_round
     display_surface.fill(blue)
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render(ip_address, True, white), (0, 0))
-    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render('RAM: '+RAM[2].replace(' ', '')+' of '+RAM[1].replace(' ', ''), True, white), (0, 40))
+    display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render('RAM: '+RAM[3].replace(' ', '')+' of '+RAM[2].replace(' ', ''), True, white), (0, 40))
     display_surface.blit(pygame.font.Font('freesansbold.ttf', 30).render("CPU: "+cpu_usage+"%", True, white), (0, 80))
     pygame.display.update()
     for event in pygame.event.get():
