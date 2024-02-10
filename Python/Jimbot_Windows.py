@@ -392,7 +392,7 @@ def question(qstn):
     elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
         screen('I am doing great!')
         moodometer=[1,1,1,2,3,4]
-    elif 'hi' == qstn or 'hi ' in qstn or 'hello' in qstn or 'what' in qstn and 'up' in qstn or 'wussup' in qstn or 'greet' in qstn:
+    elif 'hi' == qstn or 'hi ' in qstn or 'hello' in qstn or 'what' in qstn and ' up' in qstn or 'wussup' in qstn or 'greet' in qstn:
         greeth=random.choice(range(1,3))
         if greeth == 1:
             screen('hello, %s' % your_name)
@@ -589,9 +589,6 @@ def question(qstn):
     elif 'never mind' in qstn or 'nevermind' in qstn:
         screen('ok')
         moodometer=[1,2,3,4]
-    elif 'when' in qstn and 'born' in qstn or 'how' in qstn and 'old' in qstn:
-        screen('I was born in 2021')
-        moodometer=[1,2,3,4,5]
     elif 'only' in qstn and 'friend' in qstn or 'best friend' in qstn:
         screen("thanks, but that's not very healthy")
         moodometer=[1,2,3,4,4,5]
@@ -636,15 +633,9 @@ def question(qstn):
         print(':)')
         speak('smiles')
         moodometer=[1,2,3,4,4,4,4,4,4,4,4]
-    elif 'welcome' in qstn:
+    elif 'welcome' in qstn and "you" in qstn:
         screen('thanks')
         moodometer=[1,2,3,4,4,4]
-    elif 'bomb' in qstn:
-        os.system('xdg-open ~/Jimbot/sounds/explosions.mp3')
-        moodometer=[1,2,3,4,5]
-    elif 'roar' in qstn:
-        os.system('xdg-open ~/Jimbot/sounds/Lion.mp3')
-        moodometer=[1,2,3,4]
     elif qstn == 'nice':
         screen('Thank you')
         moodometer=[1,2,3,4]
@@ -660,38 +651,31 @@ def question(qstn):
     elif 'ok' in qstn:
         screen('ok')
         moodometer=[1,2,3,4,5]
-    elif 'time' in qstn:
+    elif 'time' in qstn and "is it" in qstn:
         ntime()
         moodometer=[1,2,3,4,5]
-    elif 'cold' in qstn:
-        screen('thats not good')
-        moodometer=[1,2,3,4,4]
     elif 'favorite color' in qstn and 'your' in qstn and not 'me' in qstn:
         screen('Amaranth')
         moodometer=[1,2,3,4,5]
     elif 'movie' in qstn or 'I watch' in qstn:
-        print('anything with Wall-e or the Jetsons')
-        screen('look in shell\nfor result')
+        screen('anything with Wall-e or the Jetsons')
         moodometer=[1,2,3,4,5]
-    elif 'maybe' in qstn:
+    elif qstn == "maybe":
         screen('maybe...')
         moodometer=[1,3,4,5]
-    elif 'it is' in qstn:
+    elif qstn == "it is":
         screen('yep')
         moodometer=[1,2]
-    elif "correct" in qstn:
+    elif "correct" in qstn and "you" in qstn and "are" in qstn or qstn == "correct":
         screen("I know")
         moodometer=[1,2,3,4]
     elif 'what' in qstn and 'your' in qstn:
         screen("I'm not sure I have one")
         moodometer=[1,2,3,4]
-    elif 'want' in qstn:
-        screen('you want it,\nbut do you need it?')
-        moodometer=[1,2,3,4,5,5]
     elif 'Bible' in qstn or 'verse' in qstn:
         bible()
         moodometer=[1,2,3,4,5]
-    elif 'oh' in qstn:
+    elif qstn == "oh":
         screen('yep')
         moodometer=[1,2,3,4,5]
     elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
@@ -701,6 +685,9 @@ def question(qstn):
         except ConnectionError:
             screen('No internet connection!')
         moodometer=[1,2,3,4,6]
+    elif 'when' in qstn and 'born' in qstn or 'how' in qstn and 'old' in qstn:
+        screen('I was born in 2021')
+        moodometer=[1,2,3,4,5]
     elif qstn == 'no' or 'no ' in qstn:
         screen('ok')
         moodometer=[1,2,3,4]
