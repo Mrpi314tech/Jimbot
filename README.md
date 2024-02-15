@@ -36,12 +36,14 @@ Say the hotword "Jimbot" and it will start listening
 <h2>Buttons</h2>
 <h3>Edit</h3>
 Allows you to add your own responses/bash commands
-<h3>Info</h3>
-Basically an instruction manual
 <h3>History</h3>
 Shows conversation history
 <h3>Stats</h3>
 Shows system statistics
+<h3>Schedule</h3>
+Allows you to schedule events and commands
+<h3>Info</h3>
+Basically an instruction manual
 <h3>Github</h3>
 Opens Jimbot Github repository
 <h3>Jimbot logo</h3>
