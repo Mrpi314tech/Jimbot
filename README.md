@@ -34,7 +34,7 @@ Presss the icon in the lower right corner
 <h1>To use:</h1>
 Say the hotword "Jimbot" and it will start listening
 <h2>Buttons</h2>
-<h3>Edit **</h3>
+<h3>Edit</h3>
 Allows you to add your own responses/bash commands
 <h3>Info</h3>
 Basically an instruction manual
