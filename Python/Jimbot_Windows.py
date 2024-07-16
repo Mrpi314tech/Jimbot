@@ -449,7 +449,7 @@ def question(qstn):
             os.system('touch '+file_location+'/Jimbot/data/'+filename+'.txt')
             with open(file_location+'/Jimbot/data/'+filename+'.txt','w') as gptfile:
                 gptfile.write(primary)
-            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.txt')
+            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.txt &')
             screen('Would you like me to read it out?')
             pygame.mixer.music.load(file_location+"/Jimbot/sounds/answer.mp3")
             pygame.mixer.music.play()
@@ -473,7 +473,7 @@ def question(qstn):
             time.sleep(2)
             os.system('mkdir '+file_location+'/Jimbot/data')
             os.system('wget -O '+file_location+'/Jimbot/data/'+filename+'.png "'+primary+'"')
-            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.png')
+            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.png &')
         else:
             if primary:
                 screen(primary)

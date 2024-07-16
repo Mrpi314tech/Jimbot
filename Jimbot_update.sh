@@ -6,6 +6,7 @@ mv ~/Jimbot/Python/new_com.py ~
 mv ~/Jimbot/Hotword/Jimbot.ppn ~
 mv ~/Jimbot/Hotword/hinfo.py ~
 mv ~/Jimbot/Dependencies ~/Jimbot-Dependencies
+mv ~/Jimbot/data ~/Jimbot-data
 rm -r ~/Jimbot
 git clone https://github.com/Mrpi314tech/Jimbot
 rm ~/Jimbot/Python/new_words.py
@@ -18,6 +19,7 @@ mv ~/Jimbot.ppn ~/Jimbot/Hotword
 mv ~/hinfo.py ~/Jimbot/Hotword
 mv ~/Jimbot_update.sh ~/delete_this_file-Jimbot
 mv ~/Jimbot-Dependencies ~/Jimbot/Dependencies
+mv ~/Jimbot-data ~/Jimbot/data
 echo "done"
 echo "Jimbot is installed!"
 echo "The Jimbot app can be found in Menu>System Tools>Jimbot"
