@@ -19,12 +19,12 @@ Jimbot is a virtual assistant for your computer. It can do many things, like ope
 *It should work on all linux based operating systems
 <br>
 <h2>To install:</h2>
-  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.2/Install.sh'>this file</a> and execute it.
+  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.3/Install.sh'>this file</a> and execute it.
   <br>
   Get an <a href='https://picovoice.ai/'>Access Key</a> from picovoice.
   <br>
   Or run this command:
-  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.2/Install.sh
+  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.3/Install.sh
 chmod +x Install.sh
 ./Install.sh</code></pre>
 <h3>To Update</h3>
@@ -34,14 +34,16 @@ Presss the icon in the lower right corner
 <h1>To use:</h1>
 Say the hotword "Jimbot" and it will start listening
 <h2>Buttons</h2>
-<h3>Edit **</h3>
+<h3>Edit</h3>
 Allows you to add your own responses/bash commands
-<h3>Info</h3>
-Basically an instruction manual
 <h3>History</h3>
 Shows conversation history
 <h3>Stats</h3>
 Shows system statistics
+<h3>Schedule</h3>
+Allows you to schedule events and commands
+<h3>Info</h3>
+Basically an instruction manual
 <h3>Github</h3>
 Opens Jimbot Github repository
 <h3>Jimbot logo</h3>

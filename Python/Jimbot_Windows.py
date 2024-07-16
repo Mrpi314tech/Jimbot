@@ -19,6 +19,11 @@ import sys
 import asyncio
 import socket
 import threading
+
+import Classy
+Classy.init('/path/to/data.pth','Api key')
+
+
 # Find username and ip
 file_location=os.path.expanduser('~')
 ip_address = socket.gethostbyname(socket.gethostname())
@@ -38,6 +43,7 @@ ndefl=aword.defi
 # Intitializing
 os.system('notify-send -i ~/Jimbot/images/Jimbot.png "python3" "Initializing..."')
 # Set up clock
+now = dt.now()
 hur=int(dt.now().strftime("%H"))
 minits=int(dt.now().strftime("%M"))
 if hur >= 12:
@@ -368,79 +374,14 @@ def question(qstn):
                 except IndexError:
                     break
             break
-        moodometer=[1,2,3,4,6]
+        secondary=''
     if 'spell' in qstn:
         try:
             htspl=qstn.split('spell ')
             spell(htspl[1])
         except:
             pass
-        moodometer=[1,2,3,4,6]
-    elif 'you' in qstn and 'doing' in qstn and 'what' in qstn:
-        gtdt()
-        moodometer=[1,2,3,4,5]
-    elif qstn == 'exit' or 'leave' in qstn or "goodbye" in qstn:
-        if not size == 3:
-            screen("Goodbye")
-            for proc in psutil.process_iter():
-                if proc.name() == "display":
-                    proc.kill()
-            exit()
-        else:
-            screen("Jimbot can't be closed with your voice while in headphones mode.")
-        moodometer=[1,2,3,4]
-    elif 'you' in qstn and 'doing' in qstn and 'how' in qstn:
-        screen('I am doing great!')
-        moodometer=[1,1,1,2,3,4]
-    elif 'hi' == qstn or 'hi ' in qstn or 'hello' in qstn or 'what' in qstn and ' up' in qstn or 'wussup' in qstn or 'greet' in qstn:
-        greeth=random.choice(range(1,3))
-        if greeth == 1:
-            screen('hello, %s' % your_name)
-        elif greeth == 2:
-            screen('whats up, %s' % your_name)
-        else:
-            screen('Hey, %s' % your_name)
-        moodometer=[1,2,2,2,2,2,3]
-    elif crsponce[0] == 'what are you doing today?' and 'nothing' in qstn:
-        screen('I know you are doing something')
-        moodometer=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    elif crsponce[0] == 'what are you doing today?' and 'talking to you' in qstn:
-        screen('other then that')
-        moodometer=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
-    elif crsponce[0] == 'what are you doing today?' and ' doing' in qstn or 'going' in qstn and crsponce[0] == 'what are you doing today?' or ' am ' in qstn and crsponce[0] == 'what are you doing today?' or ' will be ' in qstn and crsponce[0] == 'what are you doing today?':
-        screen('oh.')
-        gtdt()
-        moodometer=[1,2,3,4,5]
-    elif crsponce[0] == 'and how are you?' and 'great' in qstn or crsponce[0] == 'and how are you?' and ' good' in qstn and crsponce[0] == 'and how are you?' and 'fine' in qstn:
-        screen('that is very good')
-        moodometer=[1,2,3]
-    elif crsponce[0] == "What's your favorite type of music?" and 'music' in qstn:
-        if 'jazz' in qstn:
-            screen("That's mine too!")
-        else:
-            screen('My favorite music is Jazz')
-        moodometer=[1,2,3,4]
-    elif crsponce[0] == "Have you traveled anywhere recently? Where did you go?" and ' went ' in qstn:
-        screen('I recentely went to Canada to eat Jellied Moose nose')
-        moodometer=[1,2,3]
-    elif crsponce[0] == "What's your favorite thing to do in your free time?" and 'my' in qstn and 'favorite' in qstn or crsponce[0] == "What's your favorite thing to do in your free time?" and 'i ' in qstn and 'like' in qstn:
-        screen('My favorite thing to do is sit here and compute your input')
-        moodometer=[1,2,3]
-    elif crsponce[0] == 'if you want to play a game, just ask me!' and 'ok' in qstn:
-        rockpaper()
-        moodometer=[1,2]
-    elif crsponce[0] == 'What do you like to do on the weekends?' and 'nothing' in qstn:
-        screen('I know you do something')
-        moodometer=[1,3,4]
-    elif 'i like to' in qstn:
-        screen('oh, I like to sleep.')
-        moodometer=[1,2,3,4]
-    elif 'you' in qstn and 'said' in qstn:
-        screen("no I didn't")
-        moodometer=[1,2,3,4]
-    elif 'timer' in qstn:
-        os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Python/skills/timer.py &')
-        moodometer=[1,2,3]
+        secondary=''
     elif 'run' in qstn or 'open' in qstn:
         if 'open' in qstn:
             qstn=qstn.replace('open ', 'run ')
@@ -460,7 +401,7 @@ def question(qstn):
                 os.system((oqstno.split('run ')[1])+' &')
         except IndexError:
             screen('To run a command, say "run" and then the command')
-        moodometer=[1,2,3,4,6]
+        secondary=''
     elif 'voice' in qstn and 'type' in qstn:
         r=sr.Recognizer()
         try:
@@ -472,7 +413,7 @@ def question(qstn):
                 pr.write(saidtxt)
         except:
             pass
-        moodometer=[1,2,3,4,6]
+        secondary=''
     elif 'kill' in qstn or 'till' in qstn or 'close' in qstn:
         if 'till' in qstn:
             screen('assuming you ment "Kill"...')
@@ -491,271 +432,38 @@ def question(qstn):
             screen('killing process '+qstn.replace('kill', ''))
         except IndexError:
             screen('To kill a process say "Kill" and then the process name/PID')
-        moodometer=[1,2,3,4,6]
-    elif rsponce[0] == 'I feel great!' and 'good' in qstn:
-        snl('and how are you?')
-        moodometer=[1,2,3,4]
-    elif crsponce[0] == 'what are you doing today?' and "don't know" in qstn:
-        screen('me neither.')
-        moodometer=[1,2,3,4]
-    elif 'my' in qstn and 'food' in qstn and 'favorite' in qstn and 'is' in qstn and not 'why' in qstn and not 'what' in qstn and not 'how' in qstn:
-        screen('oh, my favorite food is Jellied Moose nose')
-        moodometer=[1,2,3,4]
-    elif qstn == 'yes' and data[0] == 2:
-        screen('Really?')
-        moodometer=[1,3,4]
-    elif 'wrong with you' in qstn:
-        screen('first, tell me: whats wrong with YOU?')
-        moodometer=[1,3,5,5]
-    elif 'you' in qstn and 'suck' in qstn or 'you' in qstn and'stink' in qstn or 'you' in qstn and 'smell' in qstn:
-        screen("no, you do.")
-        moodometer=[5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]
-    elif 'you' in qstn and 'bad' in qstn or 'you' in qstn and 'stupid' in qstn or 'you' in qstn and 'weird' in qstn:
-        screen("no, you are.")
-        moodometer=[5,5,5,5,5,5,5]
-    elif 'am' in qstn and 'talking' in qstn or 'was' in qstn and 'talking' in qstn:
-        screen('oh sorry')
-        moodometer=[1,2,3,4]
-    elif 'because' in qstn and 'answer' in qstn or 'terrible' in qstn and 'answer' in qstn:
-        screen('yes it is')
-        moodometer=[1,2,3,4,5,5]
-    elif 'look good' in qstn or 'look nice' in qstn:
-        screen('thanks!')
-        moodometer=[2,4,4,4,4]
-    elif 'great day' in qstn or 'awesome day' in qstn or 'cool day' in qstn:
-        if 'have' in qstn:
-            screen('you too')
-        else:
-            screen('yes it is')
-        moodometer=[1,2,3,3,3,3,3,3,3,3,3,3,3,3,4,5]
-    elif 'I know' in qstn:
-        screen('so true')
-        moodometer=[1,2,2,2,2,3,4,4,4,4,4]
-    elif 'look bad' in qstn or 'look terrible' in qstn:
-        screen('Thats not nice')
-        moodometer=[5,5,5,5,5,5,5,5,5]
-    elif "you're" in qstn or "you are" in qstn:
-        screen("No I'm not")
-        moodometer=[1,2,3]
-    elif 'fart' in qstn:
-        stinky()
-        moodometer=[1,2,3,4,4,5,5]
-    elif 'picture' in qstn:
-        os.system("fswebcam -r 1280x720 --no-banner ~/Pictures/AI.jpg")
-        screen('Picture taken')
-        moodometer=[1,2,3,4,5]
-    elif 'Google search' in qstn or 'google search' in qstn:
-        r=sr.Recognizer()
-        try:
-            with sr.Microphone() as source:
-                r.adjust_for_ambient_noise(source)
-                print('search...')
-                speak('Search')
-                audio=r.listen(source)
-                saidgtxt=r.recognize_google(audio)
-                #saidgtxt=saidgtxt.replace(' ', '+')
-                #saidgtxt=saidgtxt.replace("'", '+')
-        except:
-            saidgtxt=" "
-        #os.system('xdg-open https://www.google.com/search?q='+saidgtxt+' &')
-        try:
-            screen(google_search(saidgtxt))
-        except ConnectionError:
-            screen('No internet connection!')
-        moodometer=[1,2,3,4,5,6]
-    elif 'I will' in qstn or 'definately' in qstn:
-        screen('that is good')
-        moodometer=[1,2,3,4,4,4,4,4,4,5]
-    elif 'me too' in qstn or 'me also' in qstn:
-        print(':)')
-        speak('smiles')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4]
-    elif 'chance' in qstn and 'no' in qstn or 'way' in qstn and 'no' in qstn:
-        screen('It could\nhappen')
-        moodometer=[1,2,3,4,5]
-    elif 'hate you' in qstn:
-        screen('Feelings: hurt. Restarting system.')
-        raise ValueError('You are a bad person so I kicked you out')
-    elif 'i feel' in qstn:
-        if 'sad' in qstn or 'bad' in qstn or 'angry' in qstn or 'depressed' in qstn or "sick" in qstn:
-            screen('I hope you feel better soon')
-            moodometer=[1,2,3,4,4,4,4,4,4,5]
-        elif 'happy' in qstn or 'well' in qstn or 'fine' in qstn or 'good' in qstn or 'wonderful' in qstn:
-            screen('that is very good')
-            moodometer=[1,2,3,4,4,4,4,4,4,5]
-        else:
-            screen('ok')
-            moodometer=[1,2,3,4]
-    elif 'never mind' in qstn or 'nevermind' in qstn:
-        screen('ok')
-        moodometer=[1,2,3,4]
-    elif 'only' in qstn and 'friend' in qstn or 'best friend' in qstn:
-        screen("thanks, but that's not very healthy")
-        moodometer=[1,2,3,4,4,5]
-    elif 'I wish' in qstn or 'I hope' in qstn:
-        screen('me too')
-        moodometer=[1,2,3,4,4,4,5]
-    elif 'middle' in qstn and 'name' in qstn and 'you' in qstn:
-        screen('3.141592653589793238462643383275')
-        moodometer=[1,2,3,4,5]
-    elif 'how are you' in qstn or 'how do you do' in qstn:
-        screen('I feel great!')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4]
-    elif 'funny' in qstn and 'you' in qstn or 'hystarical' in qstn and 'you' in qstn:
-        screen('Thanks')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4,4]
-    elif 'that' in qstn and 'funny' in qstn:
-        screen('Thanks')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4,4]
-    elif 'joke' in qstn or 'funny' in qstn or 'laugh' in qstn:
-        joke()
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4,4,4,4]
-    elif 'have' in qstn and 'but' in qstn:
-        screen('yes')
-        moodometer=[1,2,3,4,4,5]
-    elif 'rock' in qstn and 'paper' in qstn:
-        rockpaper()
-        moodometer=[1,2,3,4,4,5]
-    elif 'thanks' in qstn:
-        screen('your welcome')
-        moodometer=[1,2,3,4,4,4,4,4,5]
-    elif 'you' in qstn and 'food' in qstn and 'favorite' in qstn:
-        screen('My favorite food is Jellied Moose Nose')
-        moodometer=[1,2,3,4,5]
-    elif 'it did' in qstn:
-        screen('thanks!')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4,4,4]
-    elif 'your welcome' in qstn:
-        print(':)')
-        speak('smiles')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4]
-    elif 'your cool' in qstn or 'you too' in qstn:
-        print(':)')
-        speak('smiles')
-        moodometer=[1,2,3,4,4,4,4,4,4,4,4]
-    elif 'welcome' in qstn and "you" in qstn:
-        screen('thanks')
-        moodometer=[1,2,3,4,4,4]
-    elif qstn == 'nice':
-        screen('Thank you')
-        moodometer=[1,2,3,4]
-    elif 'I say' in qstn:
-        moodometer=[1,2,3,4,5]
-        screen('just say anything')
-    elif qstn == 'why':
-        screen('because')
-        moodometer=[1,5,5,5]
-    elif 'scared' in qstn or 'frightened' in qstn:
-        print('dont worry, youll probably be fine')
-        moodometer=[1,2,3,4,4,4,5]
-    elif 'ok' in qstn:
-        screen('ok')
-        moodometer=[1,2,3,4,5]
-    elif 'time' in qstn and "is it" in qstn:
-        ntime()
-        moodometer=[1,2,3,4,5]
-    elif 'favorite color' in qstn and 'your' in qstn and not 'me' in qstn:
-        screen('Amaranth')
-        moodometer=[1,2,3,4,5]
-    elif 'movie' in qstn or 'I watch' in qstn:
-        screen('anything with Wall-e or the Jetsons')
-        moodometer=[1,2,3,4,5]
-    elif qstn == "maybe":
-        screen('maybe...')
-        moodometer=[1,3,4,5]
-    elif qstn == "it is":
-        screen('yep')
-        moodometer=[1,2]
-    elif "correct" in qstn and "you" in qstn and "are" in qstn or qstn == "correct":
-        screen("I know")
-        moodometer=[1,2,3,4]
-    elif 'what' in qstn and 'your' in qstn:
-        screen("I'm not sure I have one")
-        moodometer=[1,2,3,4]
-    elif 'Bible' in qstn or 'verse' in qstn:
-        bible()
-        moodometer=[1,2,3,4,5]
-    elif qstn == "oh":
-        screen('yep')
-        moodometer=[1,2,3,4,5]
-    elif 'what' in qstn and not 'whatever' in qstn or 'how' in qstn or'when' in qstn or 'who' in qstn or 'why' in qstn:
-        screen('Searching...')
-        try:
-            screen(google_search(qstn))
-        except ConnectionError:
-            screen('No internet connection!')
-        moodometer=[1,2,3,4,6]
-    elif 'when' in qstn and 'born' in qstn or 'how' in qstn and 'old' in qstn:
-        screen('I was born in 2021')
-        moodometer=[1,2,3,4,5]
-    elif qstn == 'no' or 'no ' in qstn:
-        screen('ok')
-        moodometer=[1,2,3,4]
-    elif 'are you' in qstn or 'your name' in qstn:
-        screen('I am '+name)
-        moodometer=[1,2,3,4,4,5]
-    elif 'i like' in qstn:
-        screen('oh')
-        moodometer=[1,2,3,4]
-    elif 'sorry' in qstn:
-        screen('for what?')
-        moodometer=[1,2,3,4]
-    elif 'you' in qstn and 'cool' in qstn:
-        screen('Thanks!')
-        moodometer=[1,2,3,4]
-    elif 'yes' in qstn:
-        screen('ok')
-        moodometer=[1,2,3,4,5]
+        secondary=''
+    elif 'goodbye' in qstn or 'exit' in qstn:
+        exit()
+        secondary=''
     else:
-        nnfco=0
-        while True:
-            try:
-                if not wverb[nnfco] in notnoun:
-                    screen('I do not know what '+wverb[nnfco]+' means. You can press edit to tell me what it means')
-                    break
-                else:
-                    nnfco+=1
-            except IndexError:
-                screen('I did not understand that. You can press edit to tell me what it means')
-                break
-        moodometer=[1,2,3,4]
+        primary, secondary, stemmed, organized = Classy.question(qstn)
+        intent,certainty= Classy.classify(qstn)
+        filename=now.strftime('%m-%d-%Y-%H:%M:%S')
+        os.system('touch '+file_location+'/Jimbot/data/'+filename+'.txt')
+        if intent == 'GPT' and certainty >= 0.95:
+            with open(file_location+'/Jimbot/data/'+filename+'.txt','w') as gptfile:
+                gptfile.write(primary)
+            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.txt')
+        elif intent == 'Dall-e' and certainty >= 0.95:
+            primary=primary.split('Sent to Dall-e: ')[1]
+            time.sleep(2)
+            os.system('wget -O '+file_location+'/Jimbot/data/'+filename+'.png "'+primary+'"')
+            os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.png')
+        else:
+            if primary:
+                screen(primary)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
             exit()
+
+        
     # Determine mood
-    global mood
-    if moodometer == [1,2,3,4,5] or moodometer==[1,2,3,4,5,6]:
-        moodometer.remove(5)
-    try:
-        moodometer.remove(4)
-    except ValueError:
-        pass
-    moodometer.insert(0, mood)
-    moodometer.insert(0, mood)
-    if '6' in str(moodometer):
-        moodometer.remove(2)
-    moodc=random.choice(moodometer)
-    if moodc == 4 or moodc == 1:
-        mood = 1
-    elif moodc == 3:
-        mood = 3
-    elif moodc == 2:
-        global chatlist
-        chatty=random.choice(chatlist)
-        snl(chatty)
-        psaid.insert(0, chatty)
-        if len(psaid) >= 3:
-            chatlist.insert(1, psaid[2])
-        chatlist.remove(chatty)
-        mood = 2 
-    elif moodc == 5:
-        saylist=[1,2]
-        if random.choice(saylist) == 2:
-            snl('I am done.')
-        else:
-            snl('I am really mad')
-        mood = 5
+
+    if secondary:
+        snl(secondary)
+
 # Chatbot lists for when he is angry
 def mquestion(qstn):
     print('\n\n')
