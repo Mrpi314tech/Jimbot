@@ -350,6 +350,7 @@ def question(qstn):
     global notnoun
     global nwordl
     global ndefl
+    global r
     wverb=qstn.split(" ")
     snfv=0
     aantt=0
@@ -440,11 +441,33 @@ def question(qstn):
         primary, secondary, stemmed, organized = Classy.question(qstn)
         intent,certainty= Classy.classify(qstn)
         filename=now.strftime('%m-%d-%Y-%H:%M:%S')
-        os.system('touch '+file_location+'/Jimbot/data/'+filename+'.txt')
+
+
+
+
         if intent == 'GPT' and certainty >= 0.95:
+            os.system('touch '+file_location+'/Jimbot/data/'+filename+'.txt')
             with open(file_location+'/Jimbot/data/'+filename+'.txt','w') as gptfile:
                 gptfile.write(primary)
             os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.txt')
+            screen('Would you like me to read it out?')
+            pygame.mixer.music.load(file_location+"/Jimbot/sounds/answer.mp3")
+            pygame.mixer.music.play()
+            # Listen
+            with sr.Microphone() as source:
+                r.adjust_for_ambient_noise(source)
+                print('Speak...')
+                audio=r.listen(source)
+                refresh()
+                try:
+                    saidtxt=r.recognize_google(audio)
+                except:
+                    saidtxt='no'
+            if 'yes' in saidtxt:
+                screen(primary)
+        
+        
+        
         elif intent == 'Dall-e' and certainty >= 0.95:
             primary=primary.split('Sent to Dall-e: ')[1]
             time.sleep(2)
