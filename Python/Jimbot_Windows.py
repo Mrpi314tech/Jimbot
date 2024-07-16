@@ -448,6 +448,7 @@ def question(qstn):
         elif intent == 'Dall-e' and certainty >= 0.95:
             primary=primary.split('Sent to Dall-e: ')[1]
             time.sleep(2)
+            os.system('mkdir '+file_location+'/Jimbot/data')
             os.system('wget -O '+file_location+'/Jimbot/data/'+filename+'.png "'+primary+'"')
             os.system('xdg-open '+file_location+'/Jimbot/data/'+filename+'.png')
         else:
