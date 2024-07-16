@@ -178,7 +178,7 @@ except:
     try:
         import Welcome.info as info
     except:
-        os.system('~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Welcome/Survey.py')
+        os.system('cd ~/Jimbot && ~/Jimbot/Bash/Jimbotterminal python3 ~/Jimbot/Welcome/Survey.py')
         sys.exit()
         exit() 
 your_name = info.your_name
