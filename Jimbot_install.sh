@@ -45,6 +45,7 @@ pip install smbus
 pip install beautifulsoup4
 pip install pyttsx3
 pip install keyboard
+pip install Classy-AI
 sudo apt-get install wmctrl
 sudo apt install fswebcam
 sudo rm -r ~/Jimbot/.git

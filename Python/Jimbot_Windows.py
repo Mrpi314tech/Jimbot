@@ -21,8 +21,6 @@ import socket
 import threading
 
 import Classy
-Classy.init('/path/to/data.pth','Api key')
-
 
 # Find username and ip
 file_location=os.path.expanduser('~')
@@ -184,6 +182,8 @@ except:
         sys.exit()
         exit() 
 your_name = info.your_name
+Classy.init(file_location+'/Jimbot/data.pth',info.api_key)
+
 name="Jimbot"
 # Simple grammar
 verb="act answer approve arrange break build buy color cough create complete cry dance describe draw drink eat edit enter exit imitate invent jump laugh lie listen paint plan play read replace run scream see shop shout sing skip sleep sneeze solve study teach touch turn walk win write whistle yank zip concern decide dislike doubt feel forget hate hear hope impress know learn like look love mind notice own perceive realize recognize remember see smell surprise please prefer promise think understand am appear are be become been being feel grow is look remain seem smell sound stay taste turn was were can could may might must ought to shall should will would"
