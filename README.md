@@ -9,7 +9,7 @@ Control your computer with your voice.
 Welcome to Jimbot!
 Jimbot is a virtual assistant for your computer. It can do many things, like open an application, run a command, type with your voice, search things on google, and much more.
 <br>
-<h1>Supported Systems</h1>
+<h2>Tested operating systems (v1.3.3 and lower)</h2>
 -Raspberry pi OS
 <br>
 -Ubuntu
@@ -18,15 +18,22 @@ Jimbot is a virtual assistant for your computer. It can do many things, like ope
 <br>
 *It should work on all linux based operating systems
 <br>
+
+<h2>Tested operating systems (v1.4.0 and up)</h2>
+-Ubuntu
+<br>
+*Other operatings systems should work, but have not been tested
 <h2>To install:</h2>
-  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.3/Install.sh'>this file</a> and execute it.
-  <br>
-  Get an <a href='https://picovoice.ai/'>Access Key</a> from picovoice.
+  Download <a href='https://github.com/Mrpi314tech/Jimbot/releases/download/v1.4.0/Install.sh'>this file</a> and execute it.
   <br>
   Or run this command:
-  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.3.3/Install.sh
+  <pre><code>wget https://github.com/Mrpi314tech/Jimbot/releases/download/v1.4.0/Install.sh
 chmod +x Install.sh
 ./Install.sh</code></pre>
+Get an <a href='https://picovoice.ai/'>Access Key</a> from picovoice.
+<br>
+Get an <a href='https://openai.com/api/'>API Key</a> from OpenAI.
+<br>
 <h3>To Update</h3>
 Presss the icon in the lower right corner
 <h3>To uninstall</h3>
