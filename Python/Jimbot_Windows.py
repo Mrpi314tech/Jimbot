@@ -440,6 +440,7 @@ def question(qstn):
     else:
         primary, secondary, stemmed, organized = Classy.question(qstn)
         intent,certainty= Classy.classify(qstn)
+        now=dt.now()
         filename=now.strftime('%m-%d-%Y-%H:%M:%S')
 
 
