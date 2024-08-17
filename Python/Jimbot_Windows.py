@@ -182,7 +182,6 @@ except:
         sys.exit()
         exit() 
 your_name = info.your_name
-Classy.init(file_location+'/Jimbot/data.pth',info.api_key)
 
 name="Jimbot"
 # Simple grammar
@@ -351,6 +350,7 @@ def question(qstn):
     global nwordl
     global ndefl
     global r
+    global info
     wverb=qstn.split(" ")
     snfv=0
     aantt=0
@@ -438,15 +438,22 @@ def question(qstn):
         exit()
         secondary=''
     else:
-        primary, secondary, stemmed, organized = Classy.question(qstn)
-        intent,certainty= Classy.classify(qstn)
+        intent,certainty= Classy.classify_api(qstn)
         now=dt.now()
         filename=now.strftime('%m-%d-%Y-%H:%M:%S')
 
 
+        primary=''
+        secondary=''
 
+        if intent == 'Search' and certainty >= 0.7:
+            primary=Classy.search(qstn,"gpt-4o-mini",info.api_key)
+        elif intent == 'Personal' and certainty >= 0.7:
+            primary,secondary,x,y=Classy.personal(qstn)
 
-        if intent == 'GPT' and certainty >= 0.95:
+        if intent == 'GPT' and certainty >= 0.7:
+            primary=Classy.chat_gpt(qstn,"gpt-4o-mini",info.api_key)
+            os.system('mkdir '+file_location+'/Jimbot/data')
             os.system('touch '+file_location+'/Jimbot/data/'+filename+'.txt')
             with open(file_location+'/Jimbot/data/'+filename+'.txt','w') as gptfile:
                 gptfile.write(primary)
@@ -469,8 +476,8 @@ def question(qstn):
         
         
         
-        elif intent == 'Dall-e' and certainty >= 0.95:
-            primary=primary.split('Sent to Dall-e: ')[1]
+        elif intent == 'Dall-e' and certainty >= 0.7:
+            Classy.dall_e(qstn,"dall-e-3","1024x1024",info.api_key)
             time.sleep(2)
             os.system('mkdir '+file_location+'/Jimbot/data')
             os.system('wget -O '+file_location+'/Jimbot/data/'+filename+'.png "'+primary+'"')
@@ -478,6 +485,7 @@ def question(qstn):
         else:
             if primary:
                 screen(primary)
+        print(primary)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
